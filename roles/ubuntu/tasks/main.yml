@@ -1,0 +1,25 @@
+- name: install packages
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+  with_items:
+  - name: software-properties-common
+  - name: git
+  - name: curl
+  - name: vim-gnome
+  - name: golang-go
+
+- name: install Google Chrome
+  apt:
+    name: google-chrome-stable
+
+- name: install requirement for `apt_repository`
+  apt:
+    name: python-apt
+
+- name: add f.lux PPA
+  apt_repository:
+    repo: ppa:nathan-renniewaldock/flux
+- name: install f.lux
+  apt:
+    name: fluxgui

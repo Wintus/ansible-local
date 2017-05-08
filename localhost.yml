@@ -4,6 +4,12 @@
   become: yes
 
   roles:
+    - role: ubuntu
+      when: ansible_distribution == "Ubuntu"
+
+    - role: ubuntu/ansible
+
+    - role: ubuntu/gnome
 
   tasks:
     - name: install git

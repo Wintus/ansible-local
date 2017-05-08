@@ -1,0 +1,9 @@
+- name: install GNOME shell extension with chrome
+  apt:
+    name: chrome-gnome-shell
+
+- name: set home folder names in English
+  shell: LANG=C xdg-user-dirs-gtk-update
+
+- name: set UI scale x2 for HiDPI
+  shell: gsettings set org.gnome.desktop.interface scaling-factor 2
