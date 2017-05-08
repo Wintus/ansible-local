@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+
+  roles:
+
+  tasks:
+    - name: install git
+      apt:
+        name: git
+      when: ansible_distribution == "Ubuntu"
