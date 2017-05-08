@@ -14,6 +14,9 @@
     - role: bash
       become: no
 
+    - role: go
+      become: no
+
   tasks:
     - name: install git
       apt:
