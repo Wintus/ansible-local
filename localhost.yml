@@ -11,6 +11,9 @@
 
     - role: ubuntu/gnome
 
+    - role: bash
+      become: no
+
   tasks:
     - name: install git
       apt:

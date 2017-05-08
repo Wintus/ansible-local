@@ -1,0 +1,8 @@
+- name: setup `bash.d/` in bash profile
+  blockinfile:
+    dest: "{{ item }}"
+    block: "{{ lookup('file', 'bash.d.sh') }}"
+  with_items:
+  - ~/.profile
+  - ~/.bash_profile
+  when: item|exists
