@@ -1,7 +1,7 @@
 - name: install anyenv
   git:
     repo: https://github.com/riywo/anyenv
-    dest: ~/.anyenv
+    dest: "{{ anyenv_root }}"
 
 - name: set anyenv in profine
   copy:
@@ -19,6 +19,16 @@
   register: anyenv_version
   changed_when: no
   failed_when: no
+
+- name: install anyenv plugins
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ anyenv_root }}/plugins/{{ item.name }}"
+  with_items:
+    - name: anyenv-update
+      repo: https://github.com/znz/anyenv-update.git
+    - name: anyenv-git
+      repo: https://github.com/znz/anyenv-git.git
 
 # *env
 
