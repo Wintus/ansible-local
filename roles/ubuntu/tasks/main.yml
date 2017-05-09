@@ -8,6 +8,7 @@
   - name: curl
   - name: vim-gnome
   - name: golang-go
+  - name: fish
 
 - name: install Google Chrome
   apt:
