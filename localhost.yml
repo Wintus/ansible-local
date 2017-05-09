@@ -10,6 +10,7 @@
     - role: ubuntu/ansible
 
     - role: ubuntu/gnome
+      become: no
 
     - role: bash
       become: no
