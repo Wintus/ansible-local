@@ -1,0 +1,52 @@
+- name: install anyenv
+  git:
+    repo: https://github.com/riywo/anyenv
+    dest: ~/.anyenv
+
+- name: set anyenv in profine
+  copy:
+    src: anyenv.sh
+    dest: "{{ bash_profile_dir }}"
+    mode: a+x
+  notify: reload profile
+
+- name: force reload profile
+  shell: . {{ bash_profile_path }}
+  changed_when: False
+
+- name: check envs
+  shell: anyenv version
+  register: anyenv_version
+  changed_when: False
+
+# *env
+
+- name: install pyenv
+  shell: anyenv install pyenv
+  when: not 'pyenv' in anyenv_version.stdout
+
+- name: rbenv requirements
+  become: yes
+  apt:
+    name: "{{ item.name }}"
+  with_items:
+    - name: libssl-dev
+    - name: libreadline-dev
+    - name: zlib1g-dev
+
+- name: install rbenv
+  shell: anyenv install rbenv
+  when: not 'rbenv' in anyenv_version.stdout
+
+- name: install each languages by *envs
+  include: install.yml
+  vars:
+    lang: "{{ item }}"
+  with_items:
+    - name: python
+      env: pyenv
+      version: "{{ python_version }}"
+
+    - name: ruby
+      env: rbenv
+      version: "{{ ruby_version }}"

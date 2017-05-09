@@ -21,6 +21,10 @@
       become: no
       tags: user
 
+    - role: anyenv
+      become: no
+      tags: user
+
   tasks:
     - name: install git
       apt:
