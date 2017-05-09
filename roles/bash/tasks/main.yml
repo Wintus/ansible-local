@@ -6,3 +6,8 @@
   - ~/.profile
   - ~/.bash_profile
   when: item|exists
+
+- name: make `bash.d/`
+  file:
+    path: ~/bash.d
+    state: directory
