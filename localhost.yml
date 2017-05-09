@@ -11,12 +11,15 @@
 
     - role: ubuntu/gnome
       become: no
+      tags: user
 
     - role: bash
       become: no
+      tags: user
 
     - role: go
       become: no
+      tags: user
 
   tasks:
     - name: install git
