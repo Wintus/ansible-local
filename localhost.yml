@@ -24,9 +24,3 @@
     - role: anyenv
       become: no
       tags: user
-
-  tasks:
-    - name: install git
-      apt:
-        name: git
-      when: ansible_distribution == "Ubuntu"
