@@ -7,7 +7,7 @@
   - ~/.bash_profile
   when: item|exists
 
-- name: make `bash.d/`
+- name: make `{{ bash_profile_dir }}/`
   file:
-    path: ~/bash.d
+    path: "{{ bash_profile_dir }}"
     state: directory
