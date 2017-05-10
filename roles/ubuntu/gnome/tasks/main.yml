@@ -4,13 +4,13 @@
 
 - name: set home folder names in English
   shell: LANG=C xdg-user-dirs-gtk-update
-  changed_when: False
+  changed_when: no
 
 - name: get UI scale
   shell: gsettings get org.gnome.desktop.interface scaling-factor
   register: ui_scale
-  changed_when: False
+  changed_when: no
 
 - name: set UI scale x{{ gnome_ui_scale }} for HiDPI
   shell: gsettings set org.gnome.desktop.interface scaling-factor {{ gnome_ui_scale }}
-  changed_when: False # ui_scale.stdout|regex_replace("^\w+ (\d+)$", "\1")|int == gnome_ui_scale
+  changed_when: no # ui_scale.stdout|regex_replace("^\w+ (\d+)$", "\1")|int == gnome_ui_scale

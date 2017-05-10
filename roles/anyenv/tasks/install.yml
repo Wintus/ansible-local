@@ -3,6 +3,6 @@
 - name: "install {{ lang.name }} {{ lang.version }}"
   shell: "{{ lang.env }} install {{ lang.version }}"
   register: install
-  ignore_errors: True
+  ignore_errors: yes
   failed_when: install.rc != 0 and not 'already exists' in install.stderr
   changed_when: not 'already exists' in install.stderr
