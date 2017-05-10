@@ -1,0 +1,17 @@
+- name: install dependencies
+  apt:
+    name: "{{ item.name }}"
+  with_items:
+    - name: g++
+    - name: gcc
+    - name: libc6-dev
+    - name: libffi-dev
+    - name: libgmp-dev
+    - name: make
+    - name: xz-utils
+    - name: zlib1g-dev
+    - name: git
+    - name: gnupg
+
+- name: install stack
+  shell: curl -sSL https://get.haskellstack.org/ | sh
