@@ -6,21 +6,30 @@
   roles:
     - role: ubuntu
       when: ansible_distribution == "Ubuntu"
+      tags:
+        - system
 
     - role: ubuntu/ansible
+      tags:
+        - system
 
     - role: ubuntu/gnome
       become: no
-      tags: user
+      tags:
+        - user
 
     - role: bash
       become: no
-      tags: user
+      tags:
+        - user
 
     - role: go
       become: no
-      tags: user
+      tags:
+        - user
 
     - role: anyenv
       become: no
-      tags: user
+      tags:
+        - user
+        - language
