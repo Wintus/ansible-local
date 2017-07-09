@@ -13,5 +13,11 @@
     - name: git
     - name: gnupg
 
+- name: check stack exists
+  shell: stack --version
+  register: stack_cmd_check
+  ignore_errors: yes
+
 - name: install stack
   shell: curl -sSL https://get.haskellstack.org/ | sh
+  when: stack_cmd_check|failed
