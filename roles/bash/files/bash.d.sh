@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# .bash.d fragment
-if [ -d "${HOME}/.bash.d" ] ; then
-    for f in "${HOME}"/.bash.d/*.sh ; do
-        [ -x "$f" ] && . "$f"
+# load .bash.d fragments
+BASHD="${HOME}/.bash.d"
+if [ -d "${BASHD}" ]; then
+    for f in "${BASHD}/*.sh"; do
+        [ -x "$f" ] && source "$f"
     done
     unset f
 fi
