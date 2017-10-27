@@ -1,0 +1,7 @@
+- name: set keymap file
+  copy:
+    src: oea
+    dest: "{{ xkb_path }}/symbols/oea"
+    owner: root
+    group: root
+    mode: 0644
