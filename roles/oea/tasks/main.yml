@@ -1,7 +1,7 @@
-- name: set keymap file
+- name: set {{ layout_name }} keymap file
   copy:
-    src: oea
-    dest: "{{ xkb_path }}/symbols/oea"
+    src: "{{ layout_name }}"
+    dest: "{{ xkb_path }}/symbols/{{ layout_name }}"
     owner: root
     group: root
     mode: 0644
