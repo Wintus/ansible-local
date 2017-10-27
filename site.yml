@@ -14,6 +14,11 @@
       tags:
         - system
 
+    - role: oea
+      become: yes
+      tags:
+        - system
+
     - role: ubuntu/gnome
       tags:
         - user
