@@ -5,6 +5,7 @@
   with_items:
   - name: software-properties-common
   - name: git
+  - name: tig
   - name: curl
   - name: vim-gnome
   - name: golang-go
@@ -21,6 +22,7 @@
 - name: add f.lux PPA
   apt_repository:
     repo: ppa:nathan-renniewaldock/flux
+
 - name: install f.lux
   apt:
     name: fluxgui

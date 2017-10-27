@@ -12,7 +12,7 @@
 
 - name: force reload profile
   shell: . {{ bash_profile_path }}
-  changed_when: False
+  changed_when: no
 
 - name: check envs
   shell: anyenv version

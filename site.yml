@@ -1,2 +1,32 @@
 ---
-- include: localhost.yml
+- hosts: localhost
+  connection: local
+
+  roles:
+    - role: ubuntu
+      become: yes
+      when: ansible_distribution == "Ubuntu"
+      tags:
+        - system
+
+    - role: ubuntu/ansible
+      become: yes
+      tags:
+        - system
+
+    - role: ubuntu/gnome
+      tags:
+        - user
+
+    - role: bash
+      tags:
+        - user
+
+    - role: go
+      tags:
+        - user
+
+    - role: anyenv
+      tags:
+        - user
+        - language
