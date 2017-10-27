@@ -5,3 +5,21 @@
     owner: root
     group: root
     mode: 0644
+
+- name: check {{ layout_name }} layout in list
+  xml:
+    path: "{{ xkb_path }}/rules/evdev.xml"
+    xpath: "//layoutList/layout/configItem/name[text()='{{ layout_name }}']"
+    count: yes
+  register: layout
+
+- name: add {{ layout_name }} keymap in list
+  xml:
+    path: "{{ xkb_path }}/rules/evdev.xml"
+    xpath: //layoutList
+    input_type: xml
+    add_children:
+      - "{{ lookup('file', 'oea.xml') }}"
+    pretty_print: yes
+    backup: yes
+  when: layout.count == 0

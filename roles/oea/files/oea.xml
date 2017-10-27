@@ -1,0 +1,19 @@
+<layout>
+    <configItem>
+        <name>oea</name>
+        <shortDescription>en</shortDescription>
+        <description>OEA layout</description>
+        <languageList>
+            <iso639Id>eng</iso639Id>
+            <iso639Id>jpn</iso639Id>
+        </languageList>
+    </configItem>
+    <variantList>
+        <variant>
+            <configItem>
+                <name>oea-us</name>
+                <description>OEA layout for US keyboard</description>
+            </configItem>
+        </variant>
+    </variantList>
+</layout>
