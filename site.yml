@@ -1,35 +1,32 @@
 ---
 - hosts: localhost
   connection: local
-  become: yes
 
   roles:
     - role: ubuntu
+      become: yes
       when: ansible_distribution == "Ubuntu"
       tags:
         - system
 
     - role: ubuntu/ansible
+      become: yes
       tags:
         - system
 
     - role: ubuntu/gnome
-      become: no
       tags:
         - user
 
     - role: bash
-      become: no
       tags:
         - user
 
     - role: go
-      become: no
       tags:
         - user
 
     - role: anyenv
-      become: no
       tags:
         - user
         - language
