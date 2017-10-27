@@ -6,3 +6,9 @@
   ignore_errors: yes
   failed_when: install.rc != 0 and not 'already exists' in install.stderr
   changed_when: not 'already exists' in install.stderr
+
+- name: "install {{ lang.env }} plugins"
+  git:
+    src: "{{ item.repo }}"
+    dest:
+  with_items: "{{ item.plugins }}"
