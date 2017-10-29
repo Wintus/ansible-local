@@ -36,6 +36,11 @@
       tags:
         - user
 
+    - role: git
+      tags:
+        - system
+        - user
+
     - role: go
       tags:
         - user
