@@ -1,0 +1,2 @@
+git_config: ~/.gitconfig
+git_config_dir: ~/.config/git
