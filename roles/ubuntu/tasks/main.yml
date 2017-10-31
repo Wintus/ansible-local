@@ -10,6 +10,7 @@
   - name: vim-gnome
   - name: golang-go
   - name: fish
+  - name: ack-grep
 
 - name: install Google Chrome
   apt:
