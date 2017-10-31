@@ -6,6 +6,10 @@
     group: root
     mode: 0644
 
+- name: install lib xml of python for xml module
+  package:
+    name: python-lxml
+
 - name: check {{ layout_name }} layout in list
   xml:
     path: "{{ xkb_path }}/rules/evdev.xml"
