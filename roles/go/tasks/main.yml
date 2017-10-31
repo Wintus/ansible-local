@@ -47,13 +47,6 @@
   shell: go get github.com/motemen/ghq
   when: which_ghq.rc != 0
 
-- name: set ghq profile
-  copy:
-    src: ghq.sh
-    dest: "{{ bash_profile_dir }}"
-    mode: a+x
-  notify: reload profile
-
 # peco command
 
 - name: check peco installed
