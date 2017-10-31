@@ -16,6 +16,7 @@
 - name: check stack exists
   shell: stack --version
   register: stack_cmd_check
+  changed_when: no
   ignore_errors: yes
 
 - name: install stack
