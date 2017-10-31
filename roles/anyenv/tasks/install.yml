@@ -12,3 +12,4 @@
     src: "{{ item.repo }}"
     dest:
   with_items: "{{ item.plugins }}"
+  when: item.plugins is defined
