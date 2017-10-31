@@ -40,7 +40,7 @@
   when: not 'rbenv' in anyenv_version.stdout
 
 - name: install each languages by *envs
-  include: install.yml
+  include_tasks: install.yml
   vars:
     lang: "{{ item }}"
   with_items:
