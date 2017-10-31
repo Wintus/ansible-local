@@ -17,7 +17,8 @@
 - name: check envs
   shell: anyenv version
   register: anyenv_version
-  changed_when: False
+  changed_when: no
+  ignore_errors: yes
 
 # *env
 
