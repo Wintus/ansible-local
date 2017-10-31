@@ -2,7 +2,7 @@
   template:
     src: golang.sh
     dest: ~/.bash.d/
-    mode: 0755
+    mode: a+x
 
 # hub command
 
