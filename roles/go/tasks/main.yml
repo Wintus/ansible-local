@@ -46,26 +46,3 @@
 - name: install ghq
   shell: go get github.com/motemen/ghq
   when: which_ghq.rc != 0
-
-# peco command
-
-- name: check peco installed
-  command: which peco
-  register: which_peco
-  ignore_errors: yes
-
-- block:
-
-  - name: download peco
-    unarchive:
-      remote_src: yes
-      src: "{{ peco_url }}"
-      dest: /tmp
-
-  - name: install peco
-    become: yes
-    copy:
-      src: "/tmp/{{ peco_type }}/bin/peco"
-      dest: /usr/local/bin
-
-  when: which_peco.rc != 0
