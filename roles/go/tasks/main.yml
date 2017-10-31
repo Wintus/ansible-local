@@ -1,13 +1,31 @@
+- name: set $GOPATH in profile
+  template:
+    src: golang.sh
+    dest: ~/.bash.d/
+    mode: 0755
+
 # hub command
 
 - name: check hub installed
   shell: which hub
   register: which_hub
   changed_when: which_hub.rc != 0
+  ignore_errors: yes
 
-- name: install hub
-  shell: go get github.com/github/hub
+- block:
   when: which_hub.rc != 0
+
+  - name: download hub binary
+    unarchive:
+      remote_src: yes
+      src: "{{ hub_url }}"
+      dest: /tmp
+
+  - name: install hub binary
+    copy:
+      src: "/tmp/hub-linux-amd64-{{ hub_version }}"
+      dest: /usr/local/bin
+    become: yes
 
 - name: set hub profile
   copy:
@@ -22,6 +40,7 @@
   shell: which ghq
   register: which_ghq
   changed_when: which_ghq.rc != 0
+  ignore_errors: yes
 
 - name: install ghq
   shell: go get github.com/motemen/ghq
@@ -37,22 +56,22 @@
 # peco command
 
 - name: check peco installed
-  stat:
-    path: "{{ peco_path }}"
+  command: which peco
   register: which_peco
+  ignore_errors: yes
 
 - block:
-  - name: download peco
-    get_url:
-      url: "https://github.com/peco/peco/releases/download/{{ peco_version }}/{{ peco_type }}.tar.gz"
-      dest: /tmp
+  when: which_peco.rc != 0
 
-  - name: extract peco
+  - name: download peco
     unarchive:
-      src: "/tmp/{{ peco_type }}.tar.gz"
+      remote_src: yes
+      src: "{{ peco_url }}"
       dest: /tmp
 
   - name: install peco
-    command: "mv /tmp/{{ peco_type }}/peco {{ peco_path }}"
+    become: yes
+    copy:
+      src: "/tmp/{{ peco_type }}/bin/peco"
+      dest: /usr/local/bin
 
-  when: not which_peco.stat.exists
