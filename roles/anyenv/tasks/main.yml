@@ -17,7 +17,8 @@
 - name: check envs
   shell: anyenv version
   register: anyenv_version
-  changed_when: False
+  changed_when: no
+  ignore_errors: yes
 
 # *env
 
@@ -39,7 +40,7 @@
   when: not 'rbenv' in anyenv_version.stdout
 
 - name: install each languages by *envs
-  include: install.yml
+  include_tasks: install.yml
   vars:
     lang: "{{ item }}"
   with_items:
