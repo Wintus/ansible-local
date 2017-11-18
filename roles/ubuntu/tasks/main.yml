@@ -16,7 +16,3 @@
 - name: install Google Chrome
   apt:
     name: google-chrome-stable
-
-- name: install requirement for `apt_repository`
-  apt:
-    name: python-apt
