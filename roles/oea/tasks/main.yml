@@ -1,0 +1,29 @@
+- name: set {{ layout_name }} keymap file
+  copy:
+    src: "{{ layout_name }}"
+    dest: "{{ xkb_path }}/symbols/{{ layout_name }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: install lib xml of python for xml module
+  package:
+    name: python-lxml
+
+- name: check {{ layout_name }} layout in list
+  xml:
+    path: "{{ xkb_path }}/rules/evdev.xml"
+    xpath: "//layoutList/layout/configItem/name[text()='{{ layout_name }}']"
+    count: yes
+  register: layout
+
+- name: add {{ layout_name }} keymap in list
+  xml:
+    path: "{{ xkb_path }}/rules/evdev.xml"
+    xpath: //layoutList
+    input_type: xml
+    add_children:
+      - "{{ lookup('file', 'oea.xml') }}"
+    pretty_print: yes
+    backup: yes
+  when: layout.count == 0
