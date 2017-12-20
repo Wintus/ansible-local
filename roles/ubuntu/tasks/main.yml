@@ -20,11 +20,3 @@
 - name: install requirement for `apt_repository`
   apt:
     name: python-apt
-
-- name: add f.lux PPA
-  apt_repository:
-    repo: ppa:nathan-renniewaldock/flux
-
-- name: install f.lux
-  apt:
-    name: fluxgui
