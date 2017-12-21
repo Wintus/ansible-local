@@ -27,6 +27,10 @@
       tags:
         - user
 
+    - role: spacemacs
+      tags:
+        - user
+
     - role: go
       tags:
         - user
