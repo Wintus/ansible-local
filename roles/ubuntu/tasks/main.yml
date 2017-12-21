@@ -1,5 +1,5 @@
 - name: install packages
-  apt:
+  package:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
   with_items:
@@ -13,7 +13,4 @@
   - name: fish
   - name: peco
   - name: silversearcher-ag
-
-- name: install Google Chrome
-  apt:
-    name: google-chrome-stable
+  - name: google-chrome-stable

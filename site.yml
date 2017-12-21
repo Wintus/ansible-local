@@ -5,7 +5,6 @@
   roles:
     - role: ubuntu
       become: yes
-      when: ansible_distribution == "Ubuntu"
       tags:
         - system
 
