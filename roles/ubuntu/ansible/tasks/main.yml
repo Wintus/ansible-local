@@ -9,3 +9,4 @@
 - name: install Ansible
   apt:
     name: ansible
+    update_cache: yes
