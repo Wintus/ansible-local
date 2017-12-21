@@ -3,15 +3,13 @@
   connection: local
 
   roles:
-    - role: ubuntu
+    - role: base
       become: yes
-      when: ansible_distribution == "Ubuntu"
       tags:
         - system
 
-    - role: ansible/apt
+    - role: ansible
       become: yes
-      when: ansible_pkg_mgr == "apt"
       tags:
         - system
 
