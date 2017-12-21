@@ -7,6 +7,7 @@
   - name: git
   - name: tig
   - name: curl
+  - name: emacs
   - name: vim-gnome
   - name: fish
   - name: peco
