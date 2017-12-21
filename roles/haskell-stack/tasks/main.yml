@@ -1,33 +1,4 @@
-- name: install dependencies
+- name: install haskell-stack
   apt:
-    name: "{{ item.name }}"
-  with_items:
-    - name: g++
-    - name: gcc
-    - name: libc6-dev
-    - name: libffi-dev
-    - name: libgmp-dev
-    - name: make
-    - name: xz-utils
-    - name: zlib1g-dev
-    - name: git
-    - name: gnupg
-
-- name: check stack exists
-  shell: stack --version
-  register: stack_cmd_check
-  changed_when: no
-  failed_when: no
-
-- name: install stack
-  block:
-
-  - name: download installer
-    get_url:
-      url: https://get.haskellstack.org/
-      dest: /tmp/haskell-installer.sh
-
-  - name: run installer
-    script: /tmp/haskell-installer.sh
-
-  when: stack_cmd_check|failed
+    name: haskell-stack
+  when: ansible_pkg_mgr == "apt"
