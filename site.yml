@@ -11,6 +11,7 @@
 
     - role: ubuntu/ansible
       become: yes
+      when: ansible_distribution == "Ubuntu"
       tags:
         - system
 
