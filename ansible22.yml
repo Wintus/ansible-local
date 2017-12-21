@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+
+  roles:
+    - role: ubuntu/ansible
+      become: yes
+      when: ansible_distribution == "Ubuntu"
+      tags:
+        - system

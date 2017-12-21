@@ -1,3 +1,7 @@
+- name: install requirement for `apt_repository`
+  apt:
+    name: python-apt
+
 - name: add Ansible PPA
   apt_repository:
     repo: ppa:ansible/ansible
@@ -5,4 +9,4 @@
 - name: install Ansible
   apt:
     name: ansible
-
+    update_cache: yes
