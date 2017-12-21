@@ -19,6 +19,7 @@
         - system
 
     - role: gnome
+      when: lookup('env','DESKTOP_SESSION') | regex_search('gnome')
       tags:
         - user
         - desktop
