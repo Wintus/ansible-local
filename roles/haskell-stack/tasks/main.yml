@@ -20,5 +20,14 @@
   failed_when: no
 
 - name: install stack
-  shell: curl -sSL https://get.haskellstack.org/ | sh
+  block:
+
+  - name: download installer
+    get_url:
+      url: https://get.haskellstack.org/
+      dest: /tmp/haskell-installer.sh
+
+  - name: run installer
+    script: /tmp/haskell-installer.sh
+
   when: stack_cmd_check|failed
