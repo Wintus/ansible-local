@@ -9,9 +9,9 @@
       tags:
         - system
 
-    - role: ubuntu/ansible
+    - role: ansible/apt
       become: yes
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_pkg_mgr == "apt"
       tags:
         - system
 
