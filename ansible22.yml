@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+
+  roles:
+    - role: ubuntu/ansible
+      become: yes
+      tags:
+        - system
