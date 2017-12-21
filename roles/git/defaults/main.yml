@@ -1,2 +1,7 @@
 git_config: ~/.gitconfig
 git_config_dir: ~/.config/git
+
+global_git_configs:
+  - section: credential
+    name: helper
+    value: cache
