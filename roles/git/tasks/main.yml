@@ -1,6 +1,13 @@
-- name: ensure git installed
-  package:
-    name: git
+- name: install package
+  become: yes
+  block:
+    - name: install git
+      package:
+        name: git
+
+    - name: install tig
+      package:
+        name: tig
 
 - name: ensure dir
   file:

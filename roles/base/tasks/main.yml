@@ -13,8 +13,6 @@
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
   with_items:
-  - name: git
-  - name: tig
   - name: curl
   - name: neovim
   - name: vim-gnome
