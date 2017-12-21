@@ -20,7 +20,7 @@
       tags:
         - system
 
-    - role: ubuntu/gnome
+    - role: gnome
       tags:
         - user
 
