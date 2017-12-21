@@ -1,7 +1,7 @@
-Role Name
+Rust
 =========
 
-A brief description of the role goes here.
+Install Rust.
 
 Requirements
 ------------
