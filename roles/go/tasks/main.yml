@@ -24,6 +24,7 @@
     copy:
       src: "/tmp/hub-linux-amd64-{{ hub_version }}/bin/hub"
       dest: /usr/local/bin
+      mode: a+x
     become: yes
 
   when: which_hub.rc != 0
