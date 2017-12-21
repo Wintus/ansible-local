@@ -3,7 +3,7 @@
   connection: local
 
   roles:
-    - role: ubuntu
+    - role: base
       become: yes
       tags:
         - system
