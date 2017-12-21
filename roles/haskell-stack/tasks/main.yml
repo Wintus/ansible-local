@@ -17,7 +17,7 @@
   shell: stack --version
   register: stack_cmd_check
   changed_when: no
-  ignore_errors: yes
+  failed_when: no
 
 - name: install stack
   shell: curl -sSL https://get.haskellstack.org/ | sh
