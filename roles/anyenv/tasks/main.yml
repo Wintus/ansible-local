@@ -26,16 +26,10 @@
   shell: anyenv install pyenv
   when: not 'pyenv' in anyenv_version.stdout
 
-- name: rbenv requirements
-  become: yes
-  apt:
-    name: "{{ item.name }}"
-  with_items:
-    - name: libssl-dev
-    - name: libreadline-dev
-    - name: zlib1g-dev
+- name: install rbenv dependencies
+  import_tasks: rbenv.yml
 
-- name: install rbenv
+- name: install rbenv by anyenv
   shell: anyenv install rbenv
   when: not 'rbenv' in anyenv_version.stdout
 

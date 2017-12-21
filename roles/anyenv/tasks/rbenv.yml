@@ -1,0 +1,17 @@
+- name: check rbenv installed
+  shell: which rbenv
+  register: which_rbenv
+  changed_when: no
+  failed_when: no
+
+- name: install rbenv requirements
+  become: yes
+  apt:
+    name: "{{ item.name }}"
+  with_items:
+    - name: libssl-dev
+    - name: libreadline-dev
+    - name: zlib1g-dev
+  when: >
+    which_rbenv.rc != 0
+    and ansible_pkg_mgr == "apt"
