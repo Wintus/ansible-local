@@ -23,6 +23,7 @@
     - role: gnome
       tags:
         - user
+        - desktop
 
     - role: bash
       tags:
