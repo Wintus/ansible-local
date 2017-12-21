@@ -22,7 +22,7 @@
 
   - name: install hub binary
     copy:
-      src: "/tmp/hub-linux-amd64-{{ hub_version }}"
+      src: "/tmp/hub-linux-amd64-{{ hub_version }}/bin/hub"
       dest: /usr/local/bin
     become: yes
 
