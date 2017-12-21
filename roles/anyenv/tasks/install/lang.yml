@@ -4,3 +4,7 @@
   shell: "{{ lang.env }} install {{ lang.version }} --skip-existing"
   register: install
   changed_when: install.stdout != ''
+
+- name: "set global version of {{ lang.name }}"
+  shell: "{{ lang.env }} global {{ lang.version }}"
+  changed_when: no
