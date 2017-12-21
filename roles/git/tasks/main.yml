@@ -9,25 +9,16 @@
       package:
         name: tig
 
-- name: ensure dir
-  file:
-    path: "{{ git_config_dir }}/conf.d"
-    state: directory
+- name: set global git configs
+  git_config:
+    scope: global
+    name: "{{ item.section }}.{{ item.name }}"
+    value: "{{ item.value }}"
+  with_items: "{{ global_git_configs }}"
 
-- name: copy config files
-  copy:
-    src: "{{ item }}"
-    dest: "{{ git_config_dir }}/conf.d"
-  with_items:
-    - aliases.ini
-    - credential.ini
-
-- name: make config from fragments
-  assemble:
-    src: "{{ git_config_dir }}/conf.d"
-    dest: "{{ git_config_dir }}/include.ini"
-
-- name: include config files
-  blockinfile:
-    dest: "{{ git_config }}"
-    block: "{{ lookup('file', 'include.ini') }}"
+- name: set global git aliases
+  git_config:
+    scope: global
+    name: "{{ item.section }}.{{ item.name }}"
+    value: "{{ item.value }}"
+  with_items: "{{ global_git_aliases }}"
