@@ -8,7 +8,6 @@
   - name: tig
   - name: curl
   - name: vim-gnome
-  - name: golang-go
   - name: fish
   - name: ack-grep
   - name: peco
