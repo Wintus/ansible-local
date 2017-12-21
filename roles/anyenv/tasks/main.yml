@@ -48,6 +48,10 @@
       env: pyenv
       version: "{{ python_version }}"
 
+    - name: python 2
+      env: pyenv
+      version: "{{ python2_version }}"
+
     - name: ruby
       env: rbenv
       version: "{{ ruby_version }}"
