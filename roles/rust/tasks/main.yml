@@ -24,3 +24,20 @@
   with_items:
     - rustc
     - cargo
+
+- name: check exa installed
+  shell: which exa
+  register: which_exa
+  failed_when: no
+  changed_when: no
+
+- name: install exa
+  block:
+    - name: install depedency
+      package:
+        name: cmake
+      become: yes
+
+    - name: install exa by cargo
+      shell: cargo install exa
+  when: which_exa.rc != 0
