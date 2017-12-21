@@ -1,9 +1,18 @@
+- name: install base packages
+  block:
+    - name: install by apt
+      apt:
+        name: "{{ item.name }}"
+        state: "{{ item.state | default('present') }}"
+      with_items:
+      - name: software-properties-common
+      when: ansible_pkg_mgr == "apt"
+
 - name: install packages
   package:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
   with_items:
-  - name: software-properties-common
   - name: git
   - name: tig
   - name: curl
