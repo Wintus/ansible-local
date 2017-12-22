@@ -16,7 +16,6 @@
   - name: git
   - name: tig
   - name: curl
-  - name: emacs
   - name: neovim
   - name: vim-gnome
   - name: fish
