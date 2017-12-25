@@ -59,9 +59,9 @@
         dest: "{{ rbenv_root.stdout }}/default-gems"
 
 - name: install each languages by *envs
-  include_tasks: install.yml
-  vars:
-    lang: "{{ item }}"
+  include_tasks: install/lang.yml
+  loop_control:
+    loop_var: lang
   with_items:
     - name: python
       env: pyenv
