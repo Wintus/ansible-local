@@ -22,16 +22,15 @@
 
 # *env
 
-- name: install pyenv
-  shell: anyenv install pyenv
-  when: not 'pyenv' in anyenv_version.stdout
-
 - name: install rbenv dependencies
   import_tasks: rbenv.yml
 
-- name: install rbenv by anyenv
-  shell: anyenv install rbenv
-  when: not 'rbenv' in anyenv_version.stdout
+- name: install *envs
+  shell: "anyenv install {{ item }} --skip-existing"
+  changed_when: no
+  with_items:
+    - rbenv
+    - pyenv
 
 - name: install each languages by *envs
   include_tasks: install.yml
