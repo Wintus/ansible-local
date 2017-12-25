@@ -39,3 +39,7 @@
   changed_when: cargo_install.rc != installed
   with_items:
     - name: exa
+    - name: fd
+      crate: fd-find
+    - name: ripgrep
+    - name: tac
