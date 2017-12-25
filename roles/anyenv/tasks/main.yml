@@ -68,7 +68,7 @@
       env: pyenv
       version: "{{ python_version }}"
 
-    - name: python 2
+    - name: python2
       env: pyenv
       version: "{{ python2_version }}"
 
