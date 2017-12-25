@@ -1,5 +1,18 @@
 ---
 
+- name: install fish by apt
+  when: ansible_pkg_mgr == "apt"
+  become: yes
+  block:
+  - name: add fish 2.* PPA
+    apt_repository:
+      repo: ppa:fish-shell/release-2
+
+  - name: install fish by apt
+    apt:
+      name: fish
+      update_cache: yes
+
 - name: install fish
   become: yes
   package:
