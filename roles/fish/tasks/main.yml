@@ -17,3 +17,15 @@
   become: yes
   package:
     name: fish
+
+- name: install fisherman
+  block:
+    - name: create directory
+      file:
+        name: "{{ fish_config_dir }}/functions/"
+        state: directory
+
+    - name: install fisherman
+      get_url:
+        url: https://git.io/fisher
+        dest: "{{ fish_config_dir }}/functions/fisher.fish"
