@@ -1,7 +1,9 @@
-Role Name
+Fish
 =========
 
-A brief description of the role goes here.
+Install fish shell
+
+See: https://fishshell.com
 
 Requirements
 ------------
