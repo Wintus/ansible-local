@@ -3,22 +3,24 @@
     repo: https://github.com/riywo/anyenv
     dest: "{{ anyenv_root }}"
 
-- name: set anyenv in profine
-  copy:
-    src: anyenv.sh
-    dest: "{{ bash_profile_dir }}"
-    mode: a+x
-  notify: reload profile
+- name: enable anyenv
+  block:
+    - name: set anyenv in profine
+      copy:
+        src: anyenv.sh
+        dest: "{{ bash_profile_dir }}"
+        mode: a+x
+      notify: reload profile
 
-- name: force reload profile
-  shell: . {{ bash_profile_path }}
-  changed_when: no
+    - name: force reload profile
+      shell: . {{ bash_profile_path }}
+      changed_when: no
 
-- name: check envs
-  shell: anyenv version
-  register: anyenv_version
-  changed_when: no
-  failed_when: no
+    - name: check envs
+      shell: anyenv version
+      register: anyenv_version
+      changed_when: no
+      failed_when: no
 
 - name: install anyenv plugins
   git:
