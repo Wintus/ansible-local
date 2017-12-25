@@ -1,2 +1,6 @@
 ---
-# tasks file for fish
+
+- name: install fish
+  become: yes
+  package:
+    name: fish
