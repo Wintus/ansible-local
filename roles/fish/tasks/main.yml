@@ -36,3 +36,8 @@
     executable: /usr/bin/fish
   register: fisher
   changed_when: "'Installing' in fisher.stdout"
+
+- name: copy config files
+  synchronize:
+    src: files/
+    dest: "{{ fish_config_dir }}"
