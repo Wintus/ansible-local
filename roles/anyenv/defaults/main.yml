@@ -3,3 +3,4 @@ anyenv_root: ~/.anyenv
 python_version: anaconda3-5.0.1
 python2_version: 2.7.14
 ruby_version: 2.4.3
+node_version: 8
