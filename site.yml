@@ -27,6 +27,11 @@
       tags:
         - user
 
+    - role: fish
+      tags:
+        - system
+        - user
+
     - role: spacemacs
       tags:
         - user
