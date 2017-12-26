@@ -1,0 +1,16 @@
+---
+
+- name: install iBus with Mozc
+  become: yes
+  block:
+    - name: install iBus
+      package:
+        name: ibus
+
+    - name: install iBus Mozc
+      package:
+        name: ibus-mozc
+  rescue:
+    - name: skip become
+      debug:
+        msg: skip install
