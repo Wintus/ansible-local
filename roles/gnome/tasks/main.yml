@@ -10,3 +10,8 @@
   dconf:
     key: /org/gnome/desktop/interface/scaling-factor
     value: 0
+
+- name: disable super key to open activity
+  dconf:
+    key: "/org/gnome/mutter/overlay-key"
+    value: "''"
