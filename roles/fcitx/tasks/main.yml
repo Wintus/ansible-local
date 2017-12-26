@@ -8,3 +8,5 @@
   copy:
     src: fcitx.sh
     dest: /etc/profile.d/
+
+- import_tasks: ibus.yml
