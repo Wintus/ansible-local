@@ -29,3 +29,10 @@
       get_url:
         url: https://git.io/fisher
         dest: "{{ fish_config_dir }}/functions/fisher.fish"
+
+- name: install fisherman packages
+  shell: "fisher {{ fisherman_packages | join(' ') }}"
+  args:
+    executable: /usr/bin/fish
+  register: fisher
+  changed_when: "'Installing' in fisher.stdout"
