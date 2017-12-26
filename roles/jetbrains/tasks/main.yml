@@ -1,2 +1,24 @@
 ---
-# tasks file for jetbrains
+
+- name: install toolbox
+  vars:
+    dir: /tmp/jetbrains/toolbox/
+  block:
+    - name: make download dir
+      file:
+        path: "{{ dir }}"
+        state: directory
+
+    - name: download tarball for toolbox
+      unarchive:
+        remote_src: yes
+        src: "https://download-cf.jetbrains.com/toolbox/jetbrains-toolbox-{{ toolbox_version }}.tar.gz"
+        dest: "{{ dir }}"
+
+    - name: move bin under path
+      copy:
+        remote_src: yes
+        src: "{{ dir }}/jetbrains-toolbox-{{ toolbox_version }}/jetbrains-toolbox"
+        dest: /usr/local/bin/
+        mode: a+x
+      become: yes
