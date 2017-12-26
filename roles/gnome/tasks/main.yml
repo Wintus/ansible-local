@@ -16,6 +16,11 @@
     key: "/org/gnome/mutter/overlay-key"
     value: "''"
 
+- name: set Emacs key binding
+  dconf:
+    key: /org/gnome/desktop/interface/gtk-key-theme
+    value: "'Emacs'"
+
 - name: fix workspace up/down shortcut keys
   block:
     - name: set key to move workspace up
