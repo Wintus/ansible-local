@@ -22,3 +22,8 @@
     name: "{{ item.section }}.{{ item.name }}"
     value: "{{ item.value }}"
   with_items: "{{ global_git_aliases }}"
+
+- name: copy global git ignore
+  copy:
+    src: ignore
+    dest: ~/.config/git/
