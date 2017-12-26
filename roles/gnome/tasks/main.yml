@@ -1,7 +1,6 @@
 - name: install GNOME shell extension with chrome
-  apt:
+  package:
     name: chrome-gnome-shell
-  when: ansible_pkg_mgr == "apt"
 
 - name: set home folder names in English
   shell: LC_ALL=C xdg-user-dirs-update
