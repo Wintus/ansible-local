@@ -3,3 +3,8 @@
 - name: install fcitx
   package:
     name: fcitx
+
+- name: setup fcitx env for wayland
+  copy:
+    src: fcitx.sh
+    dest: /etc/profile.d/
