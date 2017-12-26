@@ -14,3 +14,38 @@
     - name: skip become
       debug:
         msg: skip install
+
+- name: add keybindings to on/off ja
+  vars:
+    dconf_dir: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+  block:
+    - name: add keybinding to turn on ja
+      dconf:
+        key: "{{ dconf_dir }}/ibus-mozc-on/{{ item.key }}"
+        value: "{{ item.value | to_json }}"
+      changed_when: no
+      with_items:
+        - key: name
+          value: ibus mozc on
+        - key: command
+          value: ibus engine 'mozc-jp'
+        - key: binding
+          value: <SUPER>j
+
+    - name: add keybinding to turn off ja
+      dconf:
+        key: "{{ dconf_dir }}/ibus-mozc-off/{{ item.key }}"
+        value: "{{ item.value | to_json }}"
+      changed_when: no
+      with_items:
+        - key: name
+          value: ibus mozc off
+        - key: command
+          value: ibus engine 'xkb:us::eng'
+        - key: binding
+          value: <SUPER>e
+
+    - name: register custom keybindings
+      dconf:
+        key: "{{ dconf_dir }}"
+        value: "['{{ dconf_dir }}/ibus-mozc-on/', '{{ dconf_dir }}/ibus-mozc-off/']"
