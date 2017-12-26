@@ -23,6 +23,10 @@
         - user
         - desktop
 
+    - role: ibus
+      tags:
+        - user
+
     - role: fcitx
       become: yes
       tags:
