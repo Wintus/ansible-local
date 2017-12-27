@@ -50,3 +50,8 @@
       tags:
         - system
         - language
+
+    - role: rust
+      tags:
+        - system
+        - language
