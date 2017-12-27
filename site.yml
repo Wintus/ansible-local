@@ -18,7 +18,7 @@
         - system
 
     - role: gnome
-      when: lookup('env','DESKTOP_SESSION') | regex_search('gnome')
+      when: lookup('env','XDG_CURRENT_DESKTOP') | regex_search('gnome')
       tags:
         - user
         - desktop
