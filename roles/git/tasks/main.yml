@@ -9,6 +9,11 @@
       package:
         name: tig
 
+  rescue:
+    - name: skip become
+      debug:
+        msg: skip install
+
 - name: set global git configs
   git_config:
     scope: global
