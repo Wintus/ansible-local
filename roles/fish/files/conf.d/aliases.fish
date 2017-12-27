@@ -14,7 +14,7 @@ alias pbpaste='xsel -bo'
 alias envs=printenv
 
 if which exa > /dev/null
-    alias ll='exa -l --color-scale --time-style=iso --git'
+    alias ll='exa -lh --color-scale --time-style=iso --git'
 end
 
 if which hub > /dev/null
