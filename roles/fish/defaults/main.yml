@@ -1,2 +1,2 @@
 ---
-# defaults file for fish
+fish_config_dir: ~/.config/fish
