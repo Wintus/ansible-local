@@ -1,14 +1,16 @@
 ---
 
 - name: install rust by script
+  vars:
+    installer: /tmp/rust-installer.sh
   block:
   - name: download installer
     get_url:
       url: https://sh.rustup.rs/
-      dest: /tmp/rust-installer.sh
+      dest: "{{ installer }}"
 
   - name: install rust
-    script: /tmp/rust-installer.sh -y
+    script: "{{ installer }} -y"
     register: install
     changed_when: "'existing' not in install.stderr"
 
