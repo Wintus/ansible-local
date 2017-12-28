@@ -1,7 +1,11 @@
-Role Name
+Node.js
 =========
 
-A brief description of the role goes here.
+Install Node.js & Yarn.
+
+See:
+- https://nodejs.org
+- https://yarnpkg.com
 
 Requirements
 ------------
