@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
-# load .bash.d fragments
-BASHD="${HOME}/.bash.d"
-if [ -d "${BASHD}" ]; then
-    for f in ${BASHD}/*.sh; do
-        [ -x "$f" ] && source "$f"
+
+function load_bash_fragments() {
+    local frag
+    for frag in ${1%/}/*.sh; do
+        if [[ -x "${frag}" ]]; then
+            source "${frag}"
+        fi
     done
-    unset f
-fi
+}
+
+load_bash_fragments $HOME/.bash.d/
