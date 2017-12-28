@@ -23,6 +23,12 @@
         name: yarn
         update_cache: yes
 
+- name: add path to yarn
+  copy:
+    src: yarn.sh
+    dest: /etc/profile.d/
+    mode: a+x
+
 - name: check global installed packages
   shell: yarn global list
   register: yarn_g_ls
