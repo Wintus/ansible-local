@@ -1,0 +1,43 @@
+---
+
+- name: install fish by apt
+  when: ansible_pkg_mgr == "apt"
+  become: yes
+  block:
+  - name: add fish 2.* PPA
+    apt_repository:
+      repo: ppa:fish-shell/release-2
+
+  - name: install fish by apt
+    apt:
+      name: fish
+      update_cache: yes
+
+- name: install fish
+  become: yes
+  package:
+    name: fish
+
+- name: install fisherman
+  block:
+    - name: create directory
+      file:
+        name: "{{ fish_config_dir }}/functions/"
+        state: directory
+
+    - name: install fisherman
+      get_url:
+        url: https://git.io/fisher
+        dest: "{{ fish_config_dir }}/functions/fisher.fish"
+
+- name: install fisherman packages
+  shell: "fisher {{ fisherman_packages | join(' ') }}"
+  args:
+    executable: /usr/bin/fish
+  register: fisher
+  changed_when: "'Installing' in fisher.stdout"
+
+- name: copy config files
+  synchronize:
+    src: files/
+    dest: "{{ fish_config_dir }}"

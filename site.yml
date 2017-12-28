@@ -18,7 +18,7 @@
         - system
 
     - role: gnome
-      when: lookup('env','DESKTOP_SESSION') | regex_search('gnome')
+      when: lookup('env','XDG_CURRENT_DESKTOP') | regex_search('GNOME')
       tags:
         - user
         - desktop
@@ -27,8 +27,18 @@
       tags:
         - user
 
+    - role: fish
+      tags:
+        - system
+        - user
+
     - role: spacemacs
       tags:
+        - user
+
+    - role: git
+      tags:
+        - system
         - user
 
     - role: jetbrains
@@ -46,6 +56,11 @@
 
     - role: haskell-stack
       become: yes
+      tags:
+        - system
+        - language
+
+    - role: rust
       tags:
         - system
         - language
