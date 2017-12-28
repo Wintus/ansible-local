@@ -8,3 +8,9 @@
   git:
     repo: https://github.com/syl20bnr/spacemacs
     dest: ~/.emacs.d
+
+- name: set env of editor
+  copy:
+    src: emacs.sh
+    dest: "{{ bash_profile_dir }}/"
+    mode: a+x
