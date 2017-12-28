@@ -19,32 +19,32 @@
   vars:
     dconf_key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
     dconf_dir: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+    keybindings:
+      - name: ibus-mozc-on
+        schemas:
+          - key: name
+            value: ibus mozc on
+          - key: command
+            value: ibus engine 'mozc-jp'
+          - key: binding
+            value: <SUPER>j
+      - name: ibus-mozc-off
+        schemas:
+          - key: name
+            value: ibus mozc off
+          - key: command
+            value: ibus engine 'xkb:us::eng'
+          - key: binding
+            value: <SUPER>e
   block:
-    - name: add keybinding to turn on ja
+    - name: add keybindings to turn on/off ja
       dconf:
-        key: "{{ dconf_dir }}/ibus-mozc-on/{{ item.key }}"
-        value: "{{ item.value | to_json }}"
+        key: "{{ dconf_dir }}/{{ item.0.name }}/{{ item.1.key }}"
+        value: "{{ item.1.value | to_json }}"
+      with_subelements:
+        - "{{ keybindings }}"
+        - schemas # inner loop key
       changed_when: no
-      with_items:
-        - key: name
-          value: ibus mozc on
-        - key: command
-          value: ibus engine 'mozc-jp'
-        - key: binding
-          value: <SUPER>j
-
-    - name: add keybinding to turn off ja
-      dconf:
-        key: "{{ dconf_dir }}/ibus-mozc-off/{{ item.key }}"
-        value: "{{ item.value | to_json }}"
-      changed_when: no
-      with_items:
-        - key: name
-          value: ibus mozc off
-        - key: command
-          value: ibus engine 'xkb:us::eng'
-        - key: binding
-          value: <SUPER>e
 
     - name: read custom keybindings
       dconf:
