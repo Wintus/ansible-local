@@ -1,0 +1,164 @@
+git_config: ~/.gitconfig
+git_config_dir: ~/.config/git
+
+global_git_configs:
+  - section: credential
+    name: helper
+    value: cache
+
+global_git_aliases:
+  - section: alias
+    name: amend
+    value: commit --amend --no-edit
+
+  - section: alias
+    name: amend-message
+    value: commit --amend
+
+  - section: alias
+    name: back
+    value: checkout -
+
+  - section: alias
+    name: branches
+    value: branch -a
+
+  - section: alias
+    name: branchout
+    value: checkout -b
+
+  - section: alias
+    name: contributors
+    value: shortlog -s -n --no-merges
+
+  - section: alias
+    name: delete-branch
+    value: branch -D
+
+  - section: alias
+    name: discard
+    value: checkout --
+
+  - section: alias
+    name: file-trail
+    value: log --follow -p -w
+
+  - section: alias
+    name: graph
+    value: 'log --graph -10 --branches --remotes --tags --format=format:"%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d" --date-order'
+
+  - section: alias
+    name: history
+    value: 'log -10 --format=format:"%Cgreen%h %Creset• %s (%aN, %ar)"'
+
+  - section: alias
+    name: invert
+    value: revert
+
+  - section: alias
+    name: last
+    value: 'log -1 HEAD --format=format:"%Cred%H"'
+
+  - section: alias
+    name: merge-trail
+    value: log --ancestry-path --merges
+
+  - section: alias
+    name: move
+    value: mv
+
+  - section: alias
+    name: nevermind
+    value: "!git reset --hard HEAD && git clean -d -f"
+
+  - section: alias
+    name: new-branch
+    value: checkout -b
+
+  - section: alias
+    name: patch
+    value: add --patch
+
+  - section: alias
+    name: precommit
+    value: diff --cached
+
+  - section: alias
+    name: prestage
+    value: diff
+
+  - section: alias
+    name: recent-branches
+    value: branch -a --sort=committerdate
+
+  - section: alias
+    name: remotes
+    value: remote -v
+
+  - section: alias
+    name: remove
+    value: rm
+
+  - section: alias
+    name: rename-branch
+    value: branch -m
+
+  - section: alias
+    name: resave
+    value: commit --amend
+
+  - section: alias
+    name: rewrite
+    value: rebase -i
+
+  - section: alias
+    name: save
+    value: commit -m
+
+  - section: alias
+    name: stashes
+    value: stash list
+
+  - section: alias
+    name: summary
+    value: status -u -s
+
+  - section: alias
+    name: tags
+    value: tag
+
+  - section: alias
+    name: track
+    value: branch --set-upstream-to
+
+  - section: alias
+    name: tuck
+    value: stash save
+
+  - section: alias
+    name: uncommit
+    value: reset --mixed HEAD~
+
+  - section: alias
+    name: unmerged
+    value: branch --no-merged
+
+  - section: alias
+    name: unstage
+    value: reset -q HEAD --
+
+  - section: alias
+    name: unstash
+    value: stash pop
+
+  - section: alias
+    name: untrack
+    value: rm -r --cached
+
+  - section: alias
+    name: untuck
+    value: 'stash pop "stash@{0}"'
+
+  - section: alias
+    name: what
+    value: show
