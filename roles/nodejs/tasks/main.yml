@@ -1,5 +1,24 @@
 ---
 
-- name: install Node.js
-  package:
-    name: nodejs
+- name: install Node.js LTS (8.x)
+  when: ansible_pkg_mgr == "apt"
+  become: yes
+  vars:
+    installer_path: /tmp/setup_node_src_v8.sh
+  block:
+    - name: download installer of NodeSource Node.js v8.x repo
+      local_action:
+        module: get_url
+        url: https://deb.nodesource.com/setup_8.x
+        dest: "{{ installer_path }}"
+      run_once: yes
+
+    # local -> remote
+    - name: install NodeSource Node.js v8.x repo
+      script: "{{ installer_path }}"
+      changed_when: no
+
+    - name: install Node.js
+      apt:
+        name: nodejs
+        update_cache: yes
