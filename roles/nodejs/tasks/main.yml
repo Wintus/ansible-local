@@ -20,3 +20,6 @@
       apt:
         name: nodejs
         update_cache: yes
+
+- name: install Yarn
+  import_tasks: yarn.yml

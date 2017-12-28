@@ -1,0 +1,20 @@
+---
+
+- name: install yarn by apt
+  when: ansible_pkg_mgr == "apt"
+  become: yes
+  block:
+    - name: add apt key of yarn
+      apt_key:
+        url: https://dl.yarnpkg.com/debian/pubkey.gpg
+
+    - name: add package repository of yarn
+      file:
+        src: yarn.list
+        dest: /etc/apt/sources.list.d/
+        state: file
+
+    - name: install yarn
+      apt:
+        name: yarn
+        update_cache: yes
