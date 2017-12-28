@@ -1,5 +1,6 @@
 alias relogin='exec fish'
 
+alias h='cd ~'
 alias t=tig
 alias o=xdg-open
 alias e='emacsclient -c'
