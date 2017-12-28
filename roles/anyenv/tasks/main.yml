@@ -47,7 +47,6 @@
       plugins:
         - name: rbenv-default-gems
           repo: https://github.com/sstephenson/rbenv-default-gems.git
-    - name: ndenv
 
 - name: set plugins of rbenv
   block:
@@ -77,10 +76,6 @@
     - name: ruby
       env: rbenv
       version: "{{ ruby_version }}"
-
-    - name: node
-      env: ndenv
-      version: "{{ node_version }}"
 
 - name: set Python versions
   shell: "pyenv global {{ python2_version }} {{ python_version }}"
