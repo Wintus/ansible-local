@@ -6,7 +6,7 @@
         name: "{{ item.name }}"
         state: "{{ item.state | default('present') }}"
       with_items:
-      - name: software-properties-common
+      - name: build-essential
 
 - name: install base packages
   package:
