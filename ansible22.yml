@@ -3,8 +3,7 @@
   connection: local
 
   roles:
-    - role: ansible/apt
+    - role: ansible
       become: yes
-      when: ansible_pkg_mgr == "apt"
       tags:
         - system
