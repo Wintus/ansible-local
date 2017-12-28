@@ -23,6 +23,11 @@
         - user
         - desktop
 
+    - role: fctix
+      become: yes
+      tags:
+        - system
+
     - role: bash
       tags:
         - user
