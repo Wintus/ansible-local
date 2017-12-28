@@ -1,14 +1,14 @@
-- name: install base packages
+- name: by apt
+  when: ansible_pkg_mgr == "apt"
   block:
-    - name: install by apt
+    - name: install base packages by apt
       apt:
         name: "{{ item.name }}"
         state: "{{ item.state | default('present') }}"
       with_items:
       - name: software-properties-common
-      when: ansible_pkg_mgr == "apt"
 
-- name: install packages
+- name: install base packages
   package:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
