@@ -65,6 +65,11 @@
   loop_control:
     loop_var: lang
   with_items:
+    - name: ruby
+      env: rbenv
+      version: "{{ ruby_version }}"
+
+    # install at last
     - name: python
       env: pyenv
       version: "{{ python_version }}"
@@ -72,10 +77,6 @@
     - name: python2
       env: pyenv
       version: "{{ python2_version }}"
-
-    - name: ruby
-      env: rbenv
-      version: "{{ ruby_version }}"
 
 - name: set Python versions
   shell: "pyenv global {{ python2_version }} {{ python_version }}"
