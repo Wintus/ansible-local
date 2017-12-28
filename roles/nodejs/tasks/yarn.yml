@@ -18,3 +18,8 @@
       apt:
         name: yarn
         update_cache: yes
+
+- name: install package globally by yarn
+  shell: "yarn global add {{ item }}"
+  with_items:
+    - flow-typed
