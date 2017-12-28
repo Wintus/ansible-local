@@ -1,17 +1,34 @@
 - name: install GNOME shell extension with chrome
-  apt:
+  package:
     name: chrome-gnome-shell
-  when: ansible_pkg_mgr == "apt"
 
 - name: set home folder names in English
   shell: LC_ALL=C xdg-user-dirs-update
   changed_when: no
 
-- name: get UI scale
-  shell: gsettings get org.gnome.desktop.interface scaling-factor
-  register: ui_scale
-  changed_when: no
+- name: set UI scale automatic
+  dconf:
+    key: "{{ dconf_dir }}/interface/scaling-factor"
+    value: 0
 
-- name: set UI scale x{{ gnome_ui_scale }} for HiDPI
-  shell: gsettings set org.gnome.desktop.interface scaling-factor {{ gnome_ui_scale }}
-  changed_when: no # ui_scale.stdout|regex_replace("^\w+ (\d+)$", "\1")|int == gnome_ui_scale
+- name: disable super key to open activity
+  dconf:
+    key: "/org/gnome/mutter/overlay-key"
+    value: "''"
+
+- name: set Emacs keybinding
+  dconf:
+    key: "{{ dconf_dir }}/interface/gtk-key-theme"
+    value: "'Emacs'"
+
+- name: fix workspace up/down keybindings
+  block:
+    - name: set keybindings to move workspace up
+      dconf:
+        key: "{{ dconf_dir }}/wm/keybindings/switch-to-workspace-up"
+        value: "['<Super>Page_Up', '<Super><Alt>Up']"
+
+    - name: set keybindings to move workspace down
+      dconf:
+        key: "{{ dconf_dir }}/wm/keybindings/switch-to-workspace-down"
+        value: "['<Super>Page_Down', '<Super><Alt>Down']"

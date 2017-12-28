@@ -1,1 +1,3 @@
-gnome_ui_scale: 0 # automatic
+---
+
+dconf_dir: /org/gnome/desktop
