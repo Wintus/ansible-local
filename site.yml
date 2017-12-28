@@ -23,7 +23,7 @@
         - user
         - desktop
 
-    - role: fctix
+    - role: fcitx
       become: yes
       tags:
         - system
