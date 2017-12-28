@@ -64,3 +64,9 @@
       tags:
         - system
         - language
+
+    - role: nodejs
+      become: yes
+      tags:
+        - system
+        - language
