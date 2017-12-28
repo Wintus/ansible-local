@@ -1,0 +1,5 @@
+---
+
+- name: install fcitx
+  package:
+    name: fcitx
