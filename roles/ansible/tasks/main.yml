@@ -1,8 +1,11 @@
+---
+
 - name: install Ansible by apt
+  when: ansible_pkg_mgr == "apt"
   block:
-  - name: install requirement for `apt_repository`
+  - name: install requirement
     apt:
-      name: python-apt
+      name: software-properties-common
 
   - name: add Ansible PPA
     apt_repository:
@@ -12,4 +15,3 @@
     apt:
       name: ansible
       update_cache: yes
-  when: ansible_pkg_mgr == "apt"

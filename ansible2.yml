@@ -1,0 +1,9 @@
+---
+
+- hosts: localhost
+
+  roles:
+    - role: ansible
+      become: yes
+      tags:
+        - system
