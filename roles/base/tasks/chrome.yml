@@ -1,0 +1,13 @@
+---
+
+- name: by apt
+  when: ansible_pkg_mgr == "apt"
+  block:
+    - name: add apt key of Google repo
+      apt_key:
+        url: https://dl.google.com/linux/linux_signing_key.pub
+
+    - name: install chrome by apt
+      apt:
+        name: google-chrome-stable
+        update_cache: yes

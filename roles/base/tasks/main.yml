@@ -20,4 +20,5 @@
     - name: vim-gnome
     - name: peco
     - name: silversearcher-ag
-    - name: google-chrome-stable
+
+- import_tasks: chrome.yml
