@@ -12,18 +12,6 @@
         mode: a+x
       notify: reload profile
 
-    - name: force reload profile
-      shell: . {{ bash_profile_path }}
-      args:
-        executable: /bin/bash
-      changed_when: no
-
-    - name: check envs
-      shell: anyenv version
-      register: anyenv_version
-      changed_when: no
-      failed_when: no
-
 - name: install anyenv plugins
   git:
     repo: "{{ item.repo }}"
@@ -35,6 +23,11 @@
       repo: https://github.com/znz/anyenv-git.git
 
 # *env
+
+- name: reload env
+  import_role:
+    name: bash
+    tasks_from: source
 
 - name: install rbenv dependencies
   import_tasks: rbenv.yml
