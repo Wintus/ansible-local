@@ -4,6 +4,7 @@
     block: "{{ lookup('file', 'bash.d.sh') }}"
   with_first_found:
     - ~/.bash_profile
+    - ~/.bash_login
     - ~/.profile
 
 - name: make `{{ bash_profile_dir }}/`
