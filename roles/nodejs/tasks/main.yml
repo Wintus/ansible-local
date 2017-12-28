@@ -6,17 +6,15 @@
   vars:
     installer_path: /tmp/setup_node_src_v8.sh
   block:
-    - name: download installer of NodeSource Node.js v8.x repo
-      local_action:
-        module: get_url
-        url: https://deb.nodesource.com/setup_8.x
-        dest: "{{ installer_path }}"
-      run_once: yes
+    - name: add apt key of NodeSource
+      apt_key:
+        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
 
-    # local -> remote
-    - name: install NodeSource Node.js v8.x repo
-      script: "{{ installer_path }}"
-      changed_when: no
+    - name: add apt sources list file for the NodeSource Node.js v8.x repo
+      file:
+        src: nodesource.list
+        dest: /etc/apt/sources.list.d/
+        state: file
 
     - name: install Node.js
       apt:
