@@ -19,14 +19,9 @@
     scope: global
     name: "{{ item.section }}.{{ item.name }}"
     value: "{{ item.value }}"
-  with_items: "{{ global_git_configs }}"
-
-- name: set global git aliases
-  git_config:
-    scope: global
-    name: "{{ item.section }}.{{ item.name }}"
-    value: "{{ item.value }}"
-  with_items: "{{ global_git_aliases }}"
+  with_items:
+    - "{{ global_git_configs }}"
+    - "{{ global_git_aliases }}"
 
 - name: copy global git ignore
   copy:
