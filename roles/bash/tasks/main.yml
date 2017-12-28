@@ -1,17 +1,10 @@
-- name: check profile files
-  stat:
-    path: "{{ item }}"
-  with_items:
-    - ~/.profile
-    - ~/.bash_profile
-  register: profiles
-
 - name: setup `bash.d/` in bash profile
   blockinfile:
-    dest: "{{ item.stat.path }}"
+    dest: "{{ item }}"
     block: "{{ lookup('file', 'bash.d.sh') }}"
-  with_items: "{{ profiles.results }}"
-  when: item.stat.exists
+  with_first_found:
+    - ~/.bash_profile
+    - ~/.profile
 
 - name: make `{{ bash_profile_dir }}/`
   file:
