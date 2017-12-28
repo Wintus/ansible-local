@@ -1,2 +1,5 @@
 ---
-# tasks file for nodejs
+
+- name: install Node.js
+  package:
+    name: nodejs
