@@ -1,3 +1,5 @@
+---
+
 - name: by apt
   when: ansible_pkg_mgr == "apt"
   block:
@@ -6,16 +8,16 @@
         name: "{{ item.name }}"
         state: "{{ item.state | default('present') }}"
       with_items:
-      - name: build-essential
+        - name: build-essential
 
 - name: install base packages
   package:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
   with_items:
-  - name: curl
-  - name: neovim
-  - name: vim-gnome
-  - name: peco
-  - name: silversearcher-ag
-  - name: google-chrome-stable
+    - name: curl
+    - name: neovim
+    - name: vim-gnome
+    - name: peco
+    - name: silversearcher-ag
+    - name: google-chrome-stable
