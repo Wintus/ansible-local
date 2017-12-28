@@ -1,10 +1,30 @@
 ---
 
 - name: install toolbox
-  unarchive:
-    remote_src: yes
-    src: "https://download-cf.jetbrains.com/toolbox/jetbrains-toolbox-{{ toolbox_version }}.tar.gz"
-    dest: /usr/local/bin
-    mode: a+x
-    extra_opts: --strip-components=1 # tar
-  become: yes
+  vars:
+    dir: /tmp/jetbrains/toolbox
+    tarball: "{{ dir }}/jetbrains-toolbox-{{ toolbox_version }}.tar.gz"
+  block:
+    - name: make download dir
+      file:
+        path: "{{ dir }}"
+        state: directory
+
+    - name: download checksum of tarball
+      get_url:
+        url: "https://download.jetbrains.com/toolbox/jetbrains-toolbox-{{ toolbox_version }}.tar.gz.sha256"
+        dest: "{{ tarball }}.sha256"
+
+    - name: download tarball for toolbox
+      get_url:
+        url: "https://download-cf.jetbrains.com/toolbox/jetbrains-toolbox-{{ toolbox_version }}.tar.gz"
+        dest: "{{ tarball }}"
+        sha256sum: "{{ lookup('file', tarball + '.sha256').split(' ') | first }}"
+
+    - name: unarchive binary
+      unarchive:
+        src: "{{ tarball }}"
+        dest: /usr/local/bin/
+        mode: a+x
+        extra_opts: --strip-components=1 # tar
+      become: yes
