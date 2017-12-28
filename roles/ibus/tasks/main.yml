@@ -17,6 +17,7 @@
 
 - name: add keybindings to on/off ja
   vars:
+    dconf_key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
     dconf_dir: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
   block:
     - name: add keybinding to turn on ja
@@ -45,7 +46,20 @@
         - key: binding
           value: <SUPER>e
 
+    - name: read custom keybindings
+      dconf:
+        key: "{{ dconf_key }}"
+        state: read
+      register: dconf_read
+
     - name: register custom keybindings
       dconf:
-        key: "{{ dconf_dir }}"
-        value: "['{{ dconf_dir }}/ibus-mozc-on/', '{{ dconf_dir }}/ibus-mozc-off/']"
+        key: "{{ dconf_key }}"
+        value: "{{ merged }}"
+      vars:
+        current: "{{ dconf_read.value | from_yaml | default([], true) }}"
+        adding:
+          - "{{ dconf_dir }}/ibus-mozc-on/"
+          - "{{ dconf_dir }}/ibus-mozc-off/"
+        merged: "{{ current | union(adding) }}"
+      changed_when: merged | difference(current)
