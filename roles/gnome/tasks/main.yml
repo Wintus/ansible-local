@@ -26,13 +26,9 @@
     - name: set keybindings to move workspace up
       dconf:
         key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-up
-        value: "{{ keybindings | to_json }}"
-      vars:
-        keybindings: ['<Super>Page_Up', '<Super><Alt>Up']
+        value: "['<Super>Page_Up', '<Super><Alt>Up']"
 
     - name: set keybindings to move workspace down
       dconf:
         key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-down
-        value: "{{ keybindings | to_json }}"
-      vars:
-        keybindings: ['<Super>Page_Down', '<Super><Alt>Down']
+        value: "['<Super>Page_Down', '<Super><Alt>Down']"
