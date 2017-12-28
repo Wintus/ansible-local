@@ -19,7 +19,9 @@
       get_url:
         url: "https://download-cf.jetbrains.com/toolbox/jetbrains-toolbox-{{ toolbox_version }}.tar.gz"
         dest: "{{ tarball }}"
-        sha256sum: "{{ lookup('file', tarball + '.sha256').split(' ') | first }}"
+        sha256sum: "{{ lookup('file', tarball + '.sha256') | regex_search(hex) }}"
+      vars:
+        hex: ([a-f\d]+)
 
     - name: unarchive binary
       unarchive:
