@@ -8,7 +8,7 @@
 
 - name: set UI scale automatic
   dconf:
-    key: /org/gnome/desktop/interface/scaling-factor
+    key: "{{ dconf_dir }}/interface/scaling-factor"
     value: 0
 
 - name: disable super key to open activity
@@ -18,17 +18,17 @@
 
 - name: set Emacs keybinding
   dconf:
-    key: /org/gnome/desktop/interface/gtk-key-theme
+    key: "{{ dconf_dir }}/interface/gtk-key-theme"
     value: "'Emacs'"
 
 - name: fix workspace up/down keybindings
   block:
     - name: set keybindings to move workspace up
       dconf:
-        key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-up
+        key: "{{ dconf_dir }}/wm/keybindings/switch-to-workspace-up"
         value: "['<Super>Page_Up', '<Super><Alt>Up']"
 
     - name: set keybindings to move workspace down
       dconf:
-        key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-down
+        key: "{{ dconf_dir }}/wm/keybindings/switch-to-workspace-down"
         value: "['<Super>Page_Down', '<Super><Alt>Down']"
