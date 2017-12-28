@@ -2,12 +2,12 @@
 - hosts: localhost
 
   roles:
-    - role: base
+    - role: ansible
       become: yes
       tags:
         - system
 
-    - role: ansible
+    - role: base
       become: yes
       tags:
         - system
