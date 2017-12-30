@@ -20,5 +20,6 @@
     - name: vim-gnome
     - name: peco
     - name: silversearcher-ag
+    - name: fonts-firacode
 
 - import_tasks: chrome.yml
