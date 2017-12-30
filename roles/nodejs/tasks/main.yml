@@ -11,10 +11,9 @@
         url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
 
     - name: add apt sources list file for the NodeSource Node.js v8.x repo
-      file:
+      copy:
         src: nodesource.list
         dest: /etc/apt/sources.list.d/
-        state: file
 
     - name: install Node.js
       apt:
