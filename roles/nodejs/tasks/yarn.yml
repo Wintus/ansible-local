@@ -13,6 +13,11 @@
         src: yarn.list
         dest: /etc/apt/sources.list.d/
 
+    - name: remove cmdtest for installation
+      apt:
+        name: cmdtest
+        state: absent
+
     - name: install yarn
       apt:
         name: yarn
