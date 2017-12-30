@@ -9,10 +9,9 @@
         url: https://dl.yarnpkg.com/debian/pubkey.gpg
 
     - name: add package repository of yarn
-      file:
+      copy:
         src: yarn.list
         dest: /etc/apt/sources.list.d/
-        state: file
 
     - name: install yarn
       apt:
