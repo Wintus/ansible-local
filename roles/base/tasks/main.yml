@@ -16,3 +16,4 @@
     - name: fonts-firacode
 
 - import_tasks: chrome.yml
+- import_tasks: apt-fast.yml
