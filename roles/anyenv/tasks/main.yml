@@ -12,16 +12,6 @@
         mode: a+x
       notify: reload profile
 
-    - name: force reload profile
-      shell: . {{ bash_profile_path }}
-      changed_when: no
-
-    - name: check envs
-      shell: anyenv version
-      register: anyenv_version
-      changed_when: no
-      failed_when: no
-
 - name: install anyenv plugins
   git:
     repo: "{{ item.repo }}"
@@ -33,6 +23,11 @@
       repo: https://github.com/znz/anyenv-git.git
 
 # *env
+
+- name: reload env
+  import_role:
+    name: bash
+    tasks_from: source
 
 - name: install rbenv dependencies
   import_tasks: rbenv.yml
@@ -65,6 +60,11 @@
   loop_control:
     loop_var: lang
   with_items:
+    - name: ruby
+      env: rbenv
+      version: "{{ ruby_version }}"
+
+    # install at last
     - name: python
       env: pyenv
       version: "{{ python_version }}"
@@ -72,10 +72,6 @@
     - name: python2
       env: pyenv
       version: "{{ python2_version }}"
-
-    - name: ruby
-      env: rbenv
-      version: "{{ ruby_version }}"
 
 - name: set Python versions
   shell: "pyenv global {{ python2_version }} {{ python_version }}"
