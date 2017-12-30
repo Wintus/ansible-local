@@ -1,7 +1,9 @@
-Role Name
+ClamAV
 =========
 
-A brief description of the role goes here.
+OSS Anti-Virus
+
+See: https://www.clamav.net
 
 Requirements
 ------------
