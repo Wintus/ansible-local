@@ -1,2 +1,10 @@
 ---
-# tasks file for clamav
+
+- name: install by apt
+  when: ansible_pkg_mgr == "apt"
+  apt:
+    name: "{{ item.name }}"
+  with_items:
+    - name: clamav
+    - name: clamav-daemon
+    - name: clamdscan
