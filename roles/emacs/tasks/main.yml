@@ -1,0 +1,13 @@
+---
+
+- name: install emacs
+  package:
+    name: emacs
+
+- name: set env of editor
+  copy:
+    src: emacs.sh
+    dest: "{{ bash_profile_dir }}/"
+    mode: a+x
+
+- import_tasks: spacemacs.yml
