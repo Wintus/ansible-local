@@ -1,14 +1,7 @@
 ---
 
-- name: by apt
+- import_tasks: apt.yml
   when: ansible_pkg_mgr == "apt"
-  block:
-    - name: install base packages by apt
-      apt:
-        name: "{{ item.name }}"
-        state: "{{ item.state | default('present') }}"
-      with_items:
-        - name: build-essential
 
 - name: install base packages
   package:
