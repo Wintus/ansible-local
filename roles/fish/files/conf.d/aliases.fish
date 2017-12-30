@@ -8,6 +8,7 @@ alias each='fmt -1'
 alias words='string split " "'
 alias prepend='string replace -r \'^\''
 alias append='string replace -r \'$\''
+alias tmpdir='cd (mktemp -d)'
 
 alias pbcopy='xsel -bi'
 alias pbpaste='xsel -bo'
