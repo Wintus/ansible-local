@@ -53,3 +53,11 @@
   lineinfile:
     path: "{{ fish_config_dir }}/config.fish"
     line: ls_on_cd
+
+- name: enable Vim+Emacs mode
+  lineinfile:
+    path: "{{ fish_config_dir }}/config.fish"
+    line: "{{ item.line }}"
+  with_items:
+    - line: '# enable Vim+Emacs mode'
+    - line: fish_hybrid_key_bindings
