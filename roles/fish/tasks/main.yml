@@ -48,3 +48,8 @@
         executable: /usr/bin/fish
       register: fisher
       changed_when: "'Installing' in fisher.stdout"
+
+- name: enable triggered functions
+  lineinfile:
+    path: "{{ fish_config_dir }}/config.fish"
+    line: ls_on_cd
