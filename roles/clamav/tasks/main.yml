@@ -25,3 +25,9 @@
     owner: clamav
     group: adm
     mode: g+w
+
+- name: add virus-scan command
+  copy:
+    src: clamdscan.sh
+    dest: /usr/local/bin/virus-scan
+    mode: a+x
