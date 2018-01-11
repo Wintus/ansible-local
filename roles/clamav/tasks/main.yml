@@ -44,3 +44,9 @@
     job: "virus-scan {{ clamdscan_target }}"
     special_time: daily
     backup: yes
+
+- name: rotate scan log by size
+  template:
+    src: logrotate/clamdscan.conf.j2
+    dest: /etc/logrotate.d/clamdscan
+    backup: yes
