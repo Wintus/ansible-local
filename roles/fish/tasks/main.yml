@@ -18,6 +18,11 @@
   package:
     name: fish
 
+- name: copy config files
+  synchronize:
+    src: fish/
+    dest: "{{ fish_config_dir }}/"
+
 - name: install fisherman
   block:
     - name: create directory
@@ -30,14 +35,29 @@
         url: https://git.io/fisher
         dest: "{{ fish_config_dir }}/functions/fisher.fish"
 
-- name: install fisherman packages
-  shell: "fisher {{ fisherman_packages | join(' ') }}"
-  args:
-    executable: /usr/bin/fish
-  register: fisher
-  changed_when: "'Installing' in fisher.stdout"
+- name: install fisherman packages by fishfile
+  block:
+    - name: set fishfile
+      copy:
+        src: fisherman/fishfile
+        dest: "{{ fish_config_dir }}/"
 
-- name: copy config files
-  synchronize:
-    src: files/
-    dest: "{{ fish_config_dir }}"
+    - name: install fisherman packages
+      shell: fisher
+      args:
+        executable: /usr/bin/fish
+      register: fisher
+      changed_when: "'Installing' in fisher.stdout"
+
+- name: enable triggered functions
+  lineinfile:
+    path: "{{ fish_config_dir }}/config.fish"
+    line: ls_on_cd
+
+- name: enable Vim+Emacs mode
+  lineinfile:
+    path: "{{ fish_config_dir }}/config.fish"
+    line: "{{ item.line }}"
+  with_items:
+    - line: '# enable Vim+Emacs mode'
+    - line: fish_hybrid_key_bindings
