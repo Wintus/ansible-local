@@ -1,2 +1,4 @@
 ---
-# defaults file for clamav
+
+clamdscan_log_dir: /var/log/clamdscan
+clamdscan_log_filename: scan.log

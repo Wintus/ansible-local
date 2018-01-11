@@ -8,3 +8,20 @@
     - name: clamav
     - name: clamav-daemon
     - name: clamdscan
+
+- name: create scan log directory
+  file:
+    path: "{{ clamdscan_log_dir }}"
+    state: directory
+    owner: clamav
+    group: adm
+    mode: g+w
+
+- name: create scan log file if missing
+  copy:
+    dest: "{{ clamdscan_log_dir }}/{{ clamdscan_log_filename }}"
+    force: no
+    content: ""
+    owner: clamav
+    group: adm
+    mode: g+w
