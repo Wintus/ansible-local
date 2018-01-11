@@ -19,6 +19,7 @@
       apt:
         name: nodejs
         update_cache: yes
+        cache_valid_time: 3600
 
 - name: install Yarn
   import_tasks: yarn.yml
