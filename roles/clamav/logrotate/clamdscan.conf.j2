@@ -1,0 +1,8 @@
+{{ clamdscan_log_dir }}/{{ clamdscan_log_filename }} {
+    missingok
+    rotate 3
+    dateext
+    compress
+    weekly
+    minsize 1M
+}

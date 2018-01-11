@@ -1,0 +1,5 @@
+---
+
+clamdscan_log_dir: /var/log/clamdscan
+clamdscan_log_filename: scan.log
+clamdscan_target: /home
