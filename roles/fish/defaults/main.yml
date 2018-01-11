@@ -1,7 +1,2 @@
 ---
 fish_config_dir: ~/.config/fish
-
-fisherman_packages:
-  - z
-  - fzf
-  - theme-bobthefish
