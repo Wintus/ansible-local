@@ -31,3 +31,16 @@
     src: clamdscan.sh
     dest: /usr/local/bin/virus-scan
     mode: a+x
+
+- name: set scan log file path in crontab
+  cronvar:
+    name: CLAMDSCAN_LOGFILE
+    value: "{{ clamdscan_log_dir }}/{{ clamdscan_log_filename }}"
+    backup: yes
+
+- name: schedule a daily scan
+  cron:
+    name: daily scan by clamav daemon
+    job: "virus-scan {{ clamdscan_target }}"
+    special_time: daily
+    backup: yes
