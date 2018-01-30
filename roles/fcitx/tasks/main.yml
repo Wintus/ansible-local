@@ -1,6 +1,7 @@
 ---
 
 - name: install fcitx
+  become: yes
   package:
     name: fcitx
 
@@ -10,3 +11,4 @@
     dest: /etc/profile.d/
 
 #- import_tasks: ibus.yml
+#  become: yes

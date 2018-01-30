@@ -1,4 +1,7 @@
+---
+
 - name: install Go
+  become: yes
   apt:
     name: golang-go
   when: ansible_pkg_mgr == "apt"
