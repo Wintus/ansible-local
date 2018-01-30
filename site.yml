@@ -56,7 +56,6 @@
         - language
 
     - role: haskell-stack
-      become: yes
       tags:
         - system
         - language
