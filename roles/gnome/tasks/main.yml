@@ -6,6 +6,9 @@
     LC_ALL: C
   changed_when: no
 
+- debug:
+    msg: run xdg-user-dirs-gtk-update instead
+
 - name: install psutil of python
   become: yes
   package: name=python-psutil
