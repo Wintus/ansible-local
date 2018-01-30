@@ -1,0 +1,65 @@
+---
+
+- name: install iBus with Mozc
+  become: yes
+  block:
+    - name: install iBus
+      package:
+        name: ibus
+
+    - name: install iBus Mozc
+      package:
+        name: ibus-mozc
+  rescue:
+    - name: skip become
+      debug:
+        msg: skip install
+
+- name: add keybindings to on/off ja
+  vars:
+    dconf_key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+    dconf_dir: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+    keybindings:
+      - name: ibus-mozc-on
+        schemas:
+          - key: name
+            value: ibus mozc on
+          - key: command
+            value: ibus engine 'mozc-jp'
+          - key: binding
+            value: <SUPER>j
+      - name: ibus-mozc-off
+        schemas:
+          - key: name
+            value: ibus mozc off
+          - key: command
+            value: ibus engine 'xkb:us::eng'
+          - key: binding
+            value: <SUPER>e
+  block:
+    - name: add keybindings to turn on/off ja
+      dconf:
+        key: "{{ dconf_dir }}/{{ item.0.name }}/{{ item.1.key }}"
+        value: "{{ item.1.value | to_json }}"
+      with_subelements:
+        - "{{ keybindings }}"
+        - schemas # inner loop key
+      changed_when: no
+
+    - name: read custom keybindings
+      dconf:
+        key: "{{ dconf_key }}"
+        state: read
+      register: dconf_read
+
+    - name: register custom keybindings
+      dconf:
+        key: "{{ dconf_key }}"
+        value: "{{ merged }}"
+      vars:
+        current: "{{ dconf_read.value | from_yaml | default([], true) }}"
+        adding:
+          - "{{ dconf_dir }}/ibus-mozc-on/"
+          - "{{ dconf_dir }}/ibus-mozc-off/"
+        merged: "{{ current | union(adding) }}"
+      changed_when: merged | difference(current)
