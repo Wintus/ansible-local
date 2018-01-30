@@ -9,6 +9,6 @@
   copy:
     src: fcitx.sh
     dest: /etc/profile.d/
+  become: yes
 
 - import_tasks: ibus.yml
-  become: yes

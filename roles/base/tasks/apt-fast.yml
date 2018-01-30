@@ -1,6 +1,7 @@
 ---
 
 - when: ansible_pkg_mgr == "apt"
+  become: yes
   block:
     - name: add apt-fast PPA
       apt_repository:
