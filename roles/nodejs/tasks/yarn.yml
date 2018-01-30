@@ -29,13 +29,14 @@
     src: yarn.sh
     dest: /etc/profile.d/
     mode: a+x
+  become: yes
 
 - name: check global installed packages
   shell: yarn global list
   register: yarn_g_ls
   changed_when: no
 
-- name: install package globally by yarn
+- name: install package globally by yarn for current user
   shell: "yarn global add {{ item }}"
   with_items:
     - n
