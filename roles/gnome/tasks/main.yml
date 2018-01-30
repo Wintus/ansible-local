@@ -1,7 +1,9 @@
 ---
 
 - name: set home folder names in English
-  shell: LC_ALL=C xdg-user-dirs-update
+  shell: xdg-user-dirs-update
+  environment:
+    LC_ALL: C
   changed_when: no
 
 - name: install psutil of python
