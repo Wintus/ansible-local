@@ -1,10 +1,10 @@
 ---
 
 - name: install Go
+  when: ansible_pkg_mgr == "apt"
   become: yes
   apt:
-    name: golang-go
-  when: ansible_pkg_mgr == "apt"
+    name: golang
 
 - name: set $GOPATH in profile
   template:
