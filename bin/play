@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+play=${1:-site.yml}
+
+if [[ -z ${ANSIBLE_BECOME_PASS} ]]; then
+    read -sp 'password: ' ANSIBLE_BECOME_PASS
+fi
+
+ansible-playbook ${play} --extra-vars "ansible_become_pass=$ANSIBLE_BECOME_PASS"
