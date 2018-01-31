@@ -24,11 +24,6 @@
 
 # *env
 
-- name: reload env
-  import_role:
-    name: bash
-    tasks_from: source
-
 - name: install rbenv dependencies
   import_tasks: rbenv.yml
 
@@ -46,7 +41,7 @@
 - name: set plugins of rbenv
   block:
     - name: "get path to rbenv root"
-      shell: "rbenv root"
+      shell: "source {{ bash_profile_dir }}/anyenv.sh; rbenv root"
       register: rbenv_root
       changed_when: no
 
@@ -74,5 +69,5 @@
       version: "{{ python2_version }}"
 
 - name: set Python versions
-  shell: "pyenv global {{ python2_version }} {{ python_version }}"
+  shell: "source {{ bash_profile_dir }}/anyenv.sh; pyenv global {{ python2_version }} {{ python_version }}"
   changed_when: no
