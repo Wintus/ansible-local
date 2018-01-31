@@ -1,2 +1,2 @@
 ---
-fish_config_dir: ~/.config/fish
+fish_config_dir: "{{ ansible_env.HOME }}/.config/fish"
