@@ -1,6 +1,5 @@
 ---
-- hosts: localhost
-
+- hosts: local dev
   roles:
     - role: ansible
       become: yes
