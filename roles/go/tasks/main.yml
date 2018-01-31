@@ -6,7 +6,7 @@
 - name: set $GOPATH in profile
   template:
     src: golang.sh
-    dest: ~/.bash.d/
+    dest: "{{ bash_profile_dir }}/"
     mode: a+x
 
 # hub command
