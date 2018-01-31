@@ -1,3 +1,5 @@
+---
+
 - name: install anyenv
   git:
     repo: https://github.com/riywo/anyenv
@@ -41,7 +43,11 @@
 - name: set plugins of rbenv
   block:
     - name: "get path to rbenv root"
-      shell: "source {{ bash_profile_dir }}/anyenv.sh; rbenv root"
+      shell: |
+        source {{ bash_profile_dir }}/anyenv.sh
+        rbenv root
+      args:
+        executable: /bin/bash
       register: rbenv_root
       changed_when: no
 
@@ -69,5 +75,9 @@
       version: "{{ python2_version }}"
 
 - name: set Python versions
-  shell: "source {{ bash_profile_dir }}/anyenv.sh; pyenv global {{ python2_version }} {{ python_version }}"
+  shell: |
+    source {{ bash_profile_dir }}/anyenv.sh
+    pyenv global {{ python2_version }} {{ python_version }}
+  args:
+    executable: /bin/bash
   changed_when: no
