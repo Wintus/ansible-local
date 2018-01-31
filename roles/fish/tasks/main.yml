@@ -20,8 +20,8 @@
 
 - name: copy config files
   synchronize:
-    src: fish/
-    dest: "{{ fish_config_dir }}/"
+    src: fish
+    dest: "{{ fish_config_dir }}"
 
 - name: install fisherman
   block:
@@ -40,9 +40,11 @@
     - name: set fishfile
       copy:
         src: fisherman/fishfile
-        dest: "{{ fish_config_dir }}/"
+        dest: "{{ fish_config_dir }}/fishfile"
+      register: fishfile
 
     - name: install fisherman packages
+      when: fishfile.changed
       shell: fisher
       args:
         executable: /usr/bin/fish
