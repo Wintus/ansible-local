@@ -1,2 +1,5 @@
-- name: reload profile
-  shell: . ~/.profile
+- name: source profile to reload
+  shell: "source {{ bash_profile_path }}"
+  args:
+    executable: /bin/bash
+  changed_when: no
