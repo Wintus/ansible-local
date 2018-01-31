@@ -41,8 +41,10 @@
       copy:
         src: fisherman/fishfile
         dest: "{{ fish_config_dir }}/fishfile"
+      register: fishfile
 
     - name: install fisherman packages
+      when: fishfile.changed
       shell: fisher
       args:
         executable: /usr/bin/fish
