@@ -1,4 +1,4 @@
-anyenv_root: ~/.anyenv
+anyenv_root: "{{ ansible_env.HOME }}/.anyenv"
 
 python_version: anaconda3-5.0.1
 python2_version: 2.7.14

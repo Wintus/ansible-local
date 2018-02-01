@@ -1,10 +1,18 @@
 # workaround: http://qiita.com/tbuchi888/items/c03e7cbce8608b1c55f1
 
 - name: "install {{ lang.name }} {{ lang.version }}"
-  shell: "{{ lang.env }} install {{ lang.version }} --skip-existing"
+  shell: |
+    source {{ bash_profile_dir }}/anyenv.sh
+    {{ lang.env }} install {{ lang.version }} --skip-existing
+  args:
+    executable: /bin/bash
   register: install
   changed_when: install.stdout != ''
 
 - name: "set global version of {{ lang.name }}"
-  shell: "{{ lang.env }} global {{ lang.version }}"
+  shell: |
+    source {{ bash_profile_dir }}/anyenv.sh
+    {{ lang.env }} global {{ lang.version }}
+  args:
+    executable: /bin/bash
   changed_when: no
