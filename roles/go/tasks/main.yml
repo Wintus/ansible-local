@@ -18,20 +18,18 @@
   failed_when: no
 
 - block:
+    - name: download hub binary
+      unarchive:
+        remote_src: yes
+        src: "{{ hub_url }}"
+        dest: /tmp
 
-  - name: download hub binary
-    unarchive:
-      remote_src: yes
-      src: "{{ hub_url }}"
-      dest: /tmp
-
-  - name: install hub binary
-    copy:
-      src: "/tmp/hub-linux-amd64-{{ hub_version }}/bin/hub"
-      dest: /usr/local/bin
-      mode: a+x
-    become: yes
-
+    - name: install hub binary
+      copy:
+        src: "/tmp/hub-linux-amd64-{{ hub_version }}/bin/hub"
+        dest: /usr/local/bin
+        mode: a+x
+      become: yes
   when: which_hub.rc != 0
 
 - name: set hub profile
