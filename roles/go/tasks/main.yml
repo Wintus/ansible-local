@@ -39,7 +39,6 @@
     src: hub.sh
     dest: "{{ bash_profile_dir }}"
     mode: a+x
-  notify: reload profile
 
 # ghq command
 
