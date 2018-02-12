@@ -12,7 +12,6 @@
         src: anyenv.sh
         dest: "{{ bash_profile_dir }}"
         mode: a+x
-      notify: reload profile
 
 - name: install anyenv plugins
   git:
