@@ -20,7 +20,7 @@
 
 - name: copy config files
   synchronize:
-    src: fish
+    src: "{{ role_path }}/files/fish/"
     dest: "{{ fish_config_dir }}"
 
 - name: install fisherman
@@ -39,7 +39,7 @@
   block:
     - name: set fishfile
       copy:
-        src: fisherman/fishfile
+        src: "{{ role_path }}/files/fisherman/fishfile"
         dest: "{{ fish_config_dir }}/fishfile"
       register: fishfile
 
