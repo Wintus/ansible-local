@@ -2,12 +2,10 @@
 - hosts: local dev
   roles:
     - role: ansible
-      become: yes
       tags:
         - system
 
     - role: base
-      become: yes
       tags:
         - system
 
@@ -23,7 +21,6 @@
         - desktop
 
     - role: fcitx
-      become: yes
       tags:
         - system
 
@@ -59,7 +56,6 @@
         - language
 
     - role: haskell-stack
-      become: yes
       tags:
         - system
         - language
@@ -70,8 +66,8 @@
         - language
 
     - role: nodejs
-      become: yes
       tags:
+        - user
         - system
         - language
 

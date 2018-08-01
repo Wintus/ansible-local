@@ -1,5 +1,7 @@
-git_config: ~/.gitconfig
-git_config_dir: ~/.config/git
+---
+
+git_config: "{{ ansible_env.HOME }}/.gitconfig"
+git_config_dir: "{{ ansible_env.HOME }}/.config/git"
 
 global_git_configs:
   - section: credential

@@ -1,10 +1,17 @@
-- name: install GNOME shell extension with chrome
-  package:
-    name: chrome-gnome-shell
+---
 
 - name: set home folder names in English
-  shell: LC_ALL=C xdg-user-dirs-update
+  shell: xdg-user-dirs-update
+  environment:
+    LC_ALL: C
   changed_when: no
+
+- debug:
+    msg: run xdg-user-dirs-gtk-update instead
+
+- name: install psutil of python
+  become: yes
+  package: name=python-psutil
 
 - name: set UI scale automatic
   dconf:

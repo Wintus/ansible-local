@@ -3,7 +3,10 @@
 - import_tasks: apt.yml
   when: ansible_pkg_mgr == "apt"
 
+- import_tasks: apt-fast.yml
+
 - name: install base packages
+  become: yes
   package:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
@@ -16,4 +19,3 @@
     - name: fonts-firacode
 
 - import_tasks: chrome.yml
-- import_tasks: apt-fast.yml

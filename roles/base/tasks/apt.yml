@@ -6,3 +6,4 @@
     state: "{{ item.state | default('present') }}"
   with_items:
     - name: build-essential
+  become: yes

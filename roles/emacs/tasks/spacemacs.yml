@@ -3,5 +3,5 @@
 - name: install spacemacs
   git:
     repo: https://github.com/syl20bnr/spacemacs
-    dest: ~/.emacs.d
+    dest: "{{ ansible_env.HOME }}/.emacs.d"
 

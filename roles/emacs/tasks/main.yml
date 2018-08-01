@@ -1,6 +1,7 @@
 ---
 
 - name: install emacs
+  become: yes
   package:
     name: emacs
 

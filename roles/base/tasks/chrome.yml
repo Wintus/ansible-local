@@ -2,6 +2,7 @@
 
 - name: by apt
   when: ansible_pkg_mgr == "apt"
+  become: yes
   block:
     - name: add apt key of Google repo
       apt_key:

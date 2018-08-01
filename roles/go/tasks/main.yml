@@ -1,7 +1,10 @@
+---
+
 - name: install Go
-  apt:
-    name: golang-go
   when: ansible_pkg_mgr == "apt"
+  become: yes
+  apt:
+    name: golang
 
 - name: set $GOPATH in profile
   template:
@@ -9,43 +12,4 @@
     dest: "{{ bash_profile_dir }}/"
     mode: a+x
 
-# hub command
-
-- name: check hub installed
-  shell: which hub
-  register: which_hub
-  changed_when: which_hub.rc != 0
-  failed_when: no
-
-- block:
-    - name: download hub binary
-      unarchive:
-        remote_src: yes
-        src: "{{ hub_url }}"
-        dest: /tmp
-
-    - name: install hub binary
-      copy:
-        src: "/tmp/hub-linux-amd64-{{ hub_version }}/bin/hub"
-        dest: /usr/local/bin
-        mode: a+x
-      become: yes
-  when: which_hub.rc != 0
-
-- name: set hub profile
-  copy:
-    src: hub.sh
-    dest: "{{ bash_profile_dir }}"
-    mode: a+x
-
-# ghq command
-
-- name: check ghq installed
-  shell: which ghq
-  register: which_ghq
-  changed_when: which_ghq.rc != 0
-  failed_when: no
-
-- name: install ghq
-  shell: go get github.com/motemen/ghq
-  when: which_ghq.rc != 0
+- import_tasks: bin.yml

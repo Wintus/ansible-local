@@ -32,5 +32,5 @@
 - name: set custom global git ignore
   file:
     state: link
-    path: ~/.gitignore_global
+    path: "{{ ansible_env.HOME }}/.gitignore_global"
     src: "{{ git_config_dir }}/ignore"
