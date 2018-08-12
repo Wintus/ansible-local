@@ -51,6 +51,12 @@
       register: fisher
       changed_when: "'Installing' in fisher.stdout"
 
+- name: ensure fish config file exists
+  copy:
+    content: ""
+    dest: "{{ fish_config_dir }}/config.fish"
+    force: no
+
 - name: enable triggered functions
   lineinfile:
     path: "{{ fish_config_dir }}/config.fish"
