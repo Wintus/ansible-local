@@ -12,7 +12,8 @@
   when: which_hub is changed
   block:
   - name: get hub
-    shell: go get -u github.com/github/hub
+    shell: go get -v -u github.com/github/hub
+    changed_when: no
 
   - name: install hub with man
     shell: make install prefix=/usr/local
@@ -30,3 +31,4 @@
 
 - name: install or update ghq
   shell: go get -v -u github.com/motemen/ghq
+  changed_when: no
