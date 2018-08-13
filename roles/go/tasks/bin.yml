@@ -28,12 +28,5 @@
 
 # ghq command
 
-- name: check ghq installed
-  shell: which ghq
-  register: which_ghq
-  changed_when: which_ghq.rc != 0
-  failed_when: no
-
-- name: install ghq
-  shell: go get github.com/motemen/ghq
-  when: which_ghq.rc != 0
+- name: install or update ghq
+  shell: go get -v -u github.com/motemen/ghq
