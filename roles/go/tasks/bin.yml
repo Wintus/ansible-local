@@ -12,11 +12,10 @@
   shell: hub --version
   register: hub_v
   failed_when: no
-  changed_when: hub_v.stdout | regex_search('\bhub version ([.\d])+\b')
-    is not version(hub_version)
+  changed_when: no
 
 - name: install or update hub
-  when: which_hub is changed or hub_v is changed
+  when: which_hub is changed or (hub_version not in (hub_v.stdout | regex_findall('\bhub version ([.\d]+)\b')))
   block:
   - name: download hub binary
     unarchive:
