@@ -8,26 +8,16 @@
   failed_when: no
   changed_when: which_hub.rc != 0
 
-- name: check hub version
-  shell: hub --version
-  register: hub_v
-  failed_when: no
-  changed_when: no
-
-- name: install or update hub
-  when: which_hub is changed or (hub_version not in (hub_v.stdout | regex_findall('\bhub version ([.\d]+)\b')))
+- name: install hub
+  when: which_hub is changed
   block:
-  - name: download hub binary
-    unarchive:
-      remote_src: yes
-      src: "{{ hub_url }}"
-      dest: /tmp
+  - name: get hub
+    shell: go get -u github.com/github/hub
 
-  - name: install hub binary
-    copy:
-      src: "/tmp/hub-linux-amd64-{{ hub_version }}/bin/hub"
-      dest: /usr/local/bin
-      mode: a+x
+  - name: install hub with man
+    shell: make install prefix=/usr/local
+    args:
+      chdir: $GOPATH/src/github.com/github/hub
     become: yes
 
 - name: set hub profile
