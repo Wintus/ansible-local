@@ -3,6 +3,7 @@ alias relogin='exec fish'
 alias h='cd ~'
 alias t=tig
 alias o=xdg-open
+alias f='o .'
 alias e='emacsclient -cn'
 alias each='fmt -1'
 alias words='string split " "'
