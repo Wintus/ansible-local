@@ -1,5 +1,5 @@
 ---
-- hosts: local dev
+- hosts: local
   tasks:
     - name: make sudo as root require no tty by default
       lineinfile:

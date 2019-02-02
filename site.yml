@@ -1,5 +1,5 @@
 ---
-- hosts: local dev
+- hosts: local
   roles:
     - role: geerlingguy.ansible
       become: yes
