@@ -1,5 +1,5 @@
-# ansible-local-dev
-Ansible provisioning for local & dev hosts with Ubuntu GNOME
+# ansible-local
+Ansible provisioning for localhost with Ubuntu GNOME
 
 ## Setup
 1. install Ansible:
