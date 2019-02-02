@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ansible-local-dev.iml" filepath="$PROJECT_DIR$/.idea/ansible-local-dev.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ansible-local.iml" filepath="$PROJECT_DIR$/.idea/ansible-local.iml" />
     </modules>
   </component>
 </project>
