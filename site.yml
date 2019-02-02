@@ -1,7 +1,8 @@
 ---
 - hosts: local dev
   roles:
-    - role: ansible
+    - role: geerlingguy.ansible
+      become: yes
       tags:
         - system
 
