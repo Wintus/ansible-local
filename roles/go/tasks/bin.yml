@@ -10,16 +10,8 @@
 
 - name: install hub
   when: which_hub is changed
-  block:
-  - name: get hub
-    shell: go get -v -u github.com/github/hub
-    changed_when: no
-
-  - name: install hub with man
-    shell: make install prefix=/usr/local
-    args:
-      chdir: $GOPATH/src/github.com/github/hub
-    become: yes
+  shell: go get -v -u github.com/github/hub
+  changed_when: no
 
 - name: set hub profile
   copy:
