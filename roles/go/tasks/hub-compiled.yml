@@ -31,6 +31,11 @@
         chdir: "{{ working_dir }}/hub-linux-amd64-{{ hub_version }}/bin/hub"
       become: yes
 
+    - name: add fish completions
+      copy:
+        src: "{{ working_dir }}/hub-linux-amd64-{{ hub_version }}/etc/hub.fish_completion"
+        dest: ~/.config/fish/completions/hub.fish
+
 - name: set hub profile
   copy:
     src: hub.sh
