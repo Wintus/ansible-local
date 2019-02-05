@@ -18,9 +18,3 @@
     src: hub.sh
     dest: "{{ bash_profile_dir }}"
     mode: a+x
-
-# ghq command
-
-- name: install or update ghq
-  shell: go get -v -u github.com/motemen/ghq
-  changed_when: no
