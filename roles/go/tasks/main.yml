@@ -12,5 +12,6 @@
     dest: "{{ bash_profile_dir }}/"
     mode: a+x
 
+- import_tasks: hub-compiled.yml
 - import_tasks: hub.yml
 - import_tasks: ghq.yml
