@@ -56,7 +56,7 @@
         - user
         - language
 
-    - role: haskell-stack
+    - role: wintus.haskell-stack
       tags:
         - system
         - language
