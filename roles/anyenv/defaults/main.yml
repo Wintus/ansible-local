@@ -1,6 +1,6 @@
 anyenv_root: "{{ ansible_env.HOME }}/.anyenv"
 
-python_version: anaconda3-5.0.1
-python2_version: 2.7.14
-ruby_version: 2.4.3
-node_version: 8 # LTS
+python_version: 3.7.2
+python2_version: 2.7.15
+ruby_version: 2.6.1
+node_version: 10 # LTS
