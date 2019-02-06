@@ -23,6 +23,13 @@
     - name: anyenv-git
       repo: https://github.com/znz/anyenv-git.git
 
+- name: initialize anyenv
+  shell: |
+    source {{ bash_profile_dir }}/anyenv.sh
+    anyenv install --force-init
+  failed_when: no
+  changed_when: no
+
 # *env
 
 - name: install rbenv dependencies
