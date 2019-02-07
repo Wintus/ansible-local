@@ -1,7 +1,0 @@
----
-
-- name: install haskell-stack
-  when: ansible_pkg_mgr == "apt"
-  become: yes
-  apt:
-    name: haskell-stack
