@@ -4,6 +4,9 @@ JetBrains
 Install JetBrains products:
 - Toolbox
 
+old releases:
+https://toolbox-support.jetbrains.com/hc/en-us/articles/360000048240-Previous-Toolbox-App-releases
+
 Requirements
 ------------
 
