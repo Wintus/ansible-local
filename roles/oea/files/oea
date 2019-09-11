@@ -48,7 +48,5 @@ xkb_symbols "oea-us"
 	key <AE12> { [      backslash,            bar                                 ] }; // \ | 
 
 	key <BKSL> { [   bracketright,     braceright                                 ] }; // ] } 
-
-	key <INS> { [ ISO_Group_Latch ] };
 };
 
