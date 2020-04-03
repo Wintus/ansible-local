@@ -25,7 +25,7 @@
       tags:
         - system
 
-    - role: bash
+    - role: wintus.bash-fragments
       tags:
         - user
 
