@@ -2,7 +2,7 @@
 
 - src: geerlingguy.ansible
 
-- src: https://github.com/Wintus/ansible-bash-fragments
+- src: https://github.com/Wintus/ansible-role-bash-fragments
   name: wintus.bash-fragments
 
 - src: https://github.com/Wintus/ansible-role-haskell-stack
