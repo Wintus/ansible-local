@@ -38,7 +38,7 @@
       tags:
         - user
 
-    - role: git
+    - role: wintus.git
       tags:
         - system
         - user
