@@ -71,8 +71,3 @@
         - user
         - system
         - language
-
-    - role: clamav
-      become: yes
-      tags:
-        - system
