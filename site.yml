@@ -71,8 +71,7 @@
         - system
         - language
 
-    - role: nodejs
+    - role: yarn
       tags:
-        - user
         - system
         - language

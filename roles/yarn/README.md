@@ -1,10 +1,9 @@
-Node.js
+Yarn
 =========
 
-Install Node.js & Yarn.
+Install Yarn.
 
 See:
-- https://nodejs.org
 - https://yarnpkg.com
 
 Requirements
