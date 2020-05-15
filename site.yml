@@ -66,6 +66,11 @@
         - system
         - language
 
+    - role: geerlingguy.nodejs
+      tags:
+        - system
+        - language
+
     - role: nodejs
       tags:
         - user
