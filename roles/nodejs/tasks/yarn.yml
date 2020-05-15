@@ -6,12 +6,13 @@
   block:
     - name: add apt key of yarn
       apt_key:
-        url: https://dl.yarnpkg.com/debian/pubkey.gpg
+        url: "{{ yarn_debian_repo_gpg_key_url }}"
 
-    - name: add package repository of yarn
-      copy:
-        src: yarn.list
-        dest: /etc/apt/sources.list.d/
+    - name: Install YARN APT repo
+      apt_repository:
+        repo: "deb {{ yarn_debian_repo_url }} stable main"
+        filename: "yarn"
+        update_cache: yes
 
     - name: remove cmdtest for installation
       apt:
