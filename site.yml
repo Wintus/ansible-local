@@ -66,8 +66,13 @@
         - system
         - language
 
-    - role: nodejs
+    - role: geerlingguy.nodejs
+      become: true
       tags:
-        - user
+        - system
+        - language
+
+    - role: yarn
+      tags:
         - system
         - language

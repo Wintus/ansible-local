@@ -11,3 +11,6 @@
 
 - src: https://github.com/Wintus/ansible-role-haskell-stack
   name: wintus.haskell-stack
+
+- src: geerlingguy.nodejs
+  version: 5.1.1
