@@ -67,6 +67,7 @@
         - language
 
     - role: geerlingguy.nodejs
+      become: true
       tags:
         - system
         - language
