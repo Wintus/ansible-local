@@ -9,17 +9,17 @@
 
     - name: set vars
       set_fact:
-        tarball: "{{ tmpdir.path }}/jetbrains-toolbox-{{ toolbox_version }}.tar.gz"
+        tarball: "{{ tmpdir.path }}/jetbrains-toolbox-{{ jetbrains_toolbox_version }}.tar.gz"
         checksum: "{{ tarball }}.sha256"
 
     - name: download checksum of tarball
       get_url:
-        url: "https://download.jetbrains.com/toolbox/jetbrains-toolbox-{{ toolbox_version }}.tar.gz.sha256"
+        url: "https://download.jetbrains.com/toolbox/jetbrains-toolbox-{{ jetbrains_toolbox_version }}.tar.gz.sha256"
         dest: "{{ checksum }}"
 
     - name: download tarball for toolbox
       get_url:
-        url: "https://download-cf.jetbrains.com/toolbox/jetbrains-toolbox-{{ toolbox_version }}.tar.gz"
+        url: "https://download-cf.jetbrains.com/toolbox/jetbrains-toolbox-{{ jetbrains_toolbox_version }}.tar.gz"
         dest: "{{ tarball }}"
         sha256sum: "{{ lookup('file', checksum) | regex_search(hex) }}"
       vars:
