@@ -1,15 +1,16 @@
 ---
 
 - name: install toolbox
-  vars:
-    dir: /tmp/jetbrains/toolbox
-    tarball: "{{ dir }}/jetbrains-toolbox-{{ toolbox_version }}.tar.gz"
-    checksum: "{{ tarball }}.sha256"
   block:
-    - name: make download dir
-      file:
-        path: "{{ dir }}"
+    - name: create temporary directory
+      tempfile:
         state: directory
+      register: tmpdir
+
+    - name: set vars
+      set_fact:
+        tarball: "{{ tmpdir.path }}/jetbrains-toolbox-{{ toolbox_version }}.tar.gz"
+        checksum: "{{ tarball }}.sha256"
 
     - name: download checksum of tarball
       get_url:
