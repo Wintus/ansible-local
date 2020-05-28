@@ -43,10 +43,6 @@
         - system
         - user
 
-    - role: jetbrains
-      tags:
-        - system
-
     - role: go
       tags:
         - user
