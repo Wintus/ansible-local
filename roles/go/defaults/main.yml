@@ -1,4 +1,4 @@
 go_path: go
 
-hub_version: 2.2.9
+hub_version: 2.8.4
 hub_url: "https://github.com/github/hub/releases/download/v{{ hub_version }}/hub-linux-amd64-{{ hub_version }}.tgz"

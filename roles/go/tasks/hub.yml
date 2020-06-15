@@ -1,0 +1,20 @@
+---
+
+# hub command
+
+- name: check hub installed
+  shell: which hub
+  register: which_hub
+  failed_when: no
+  changed_when: which_hub.rc != 0
+
+- name: install hub
+  when: which_hub is changed
+  shell: go get -v -u github.com/github/hub
+  changed_when: no
+
+- name: set hub profile
+  copy:
+    src: hub.sh
+    dest: "{{ bash_profile_dir }}"
+    mode: a+x
