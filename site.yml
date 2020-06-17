@@ -10,7 +10,7 @@
       tags:
         - system
 
-    - role: oea
+    - role: wintus.oea
       become: yes
       tags:
         - system
