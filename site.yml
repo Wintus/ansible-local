@@ -47,9 +47,10 @@
       tags:
         - user
 
-    - role: anyenv
+    - role: wintus.anyenv
       tags:
         - user
+        - system
         - language
 
     - role: wintus.haskell-stack

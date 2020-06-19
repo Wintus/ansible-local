@@ -1,6 +1,0 @@
-anyenv_root: "{{ ansible_env.HOME }}/.anyenv"
-
-python_version: 3.7.2
-python2_version: 2.7.15
-ruby_version: 2.6.1
-node_version: 10 # LTS
