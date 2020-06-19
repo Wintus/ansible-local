@@ -1,5 +1,4 @@
 ---
-
 - name: install Go
   when: ansible_pkg_mgr == "apt"
   become: yes
@@ -12,6 +11,5 @@
     dest: "{{ bash_profile_dir }}/"
     mode: a+x
 
-- import_tasks: hub-compiled.yml
-- import_tasks: hub.yml
-- import_tasks: ghq.yml
+- name: install tools
+  import_tasks: tools.yml

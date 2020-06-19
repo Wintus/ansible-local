@@ -1,0 +1,4 @@
+---
+- import_tasks: hub-compiled.yml
+- import_tasks: hub.yml
+- import_tasks: ghq.yml
