@@ -1,7 +1,6 @@
 ---
 
 - import_tasks: apt.yml
-  when: ansible_pkg_mgr == "apt"
 
 - import_tasks: apt-fast.yml
 

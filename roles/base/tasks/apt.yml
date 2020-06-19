@@ -1,6 +1,7 @@
 ---
 
 - name: install base packages by apt
+  when: ansible_pkg_mgr == "apt"
   apt:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
