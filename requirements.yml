@@ -12,6 +12,9 @@
 - src: https://github.com/Wintus/ansible-role-git
   name: wintus.git
 
+- src: https://github.com/Wintus/ansible-role-gnome
+  name: wintus.gnome
+
 - src: https://github.com/Wintus/ansible-role-oea
   name: wintus.oea
 
