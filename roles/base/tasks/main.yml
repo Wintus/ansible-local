@@ -1,7 +1,6 @@
 ---
 
 - import_tasks: apt.yml
-  when: ansible_pkg_mgr == "apt"
 
 - import_tasks: apt-fast.yml
 
@@ -10,11 +9,9 @@
   package:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"
-  with_items:
+  loop:
     - name: curl
-    - name: neovim
-    - name: vim-gnome
-    - name: peco
+    - name: vim
     - name: silversearcher-ag
     - name: fonts-firacode
 
