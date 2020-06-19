@@ -12,8 +12,7 @@
     state: "{{ item.state | default('present') }}"
   with_items:
     - name: curl
-    - name: neovim
-    - name: vim-gnome
+    - name: vim
     - name: silversearcher-ag
     - name: fonts-firacode
 
