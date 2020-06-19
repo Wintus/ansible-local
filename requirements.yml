@@ -18,6 +18,9 @@
 - src: https://github.com/Wintus/ansible-role-oea
   name: wintus.oea
 
+- src: https://github.com/Wintus/ansible-role-fcitx
+  name: wintus.fcitx
+
 - src: geerlingguy.nodejs
   version: 5.1.1
 
