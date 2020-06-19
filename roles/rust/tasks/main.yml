@@ -27,21 +27,5 @@
     - rustc
     - cargo
 
-- name: install depedency of exa
-  package:
-    name: cmake
-  become: yes
-
-- name: "install tools by cargo"
-  shell: "cargo install {{ item.crate | default(item.name) }}"
-  register: cargo_install
-  vars:
-    installed: 101
-  failed_when: cargo_install.rc not in [0, installed]
-  changed_when: cargo_install.rc != installed
-  with_items:
-    - name: exa
-    - name: fd
-      crate: fd-find
-    - name: ripgrep
-    - name: tac
+- name: install rust tools
+  import_tasks: tools.yml
