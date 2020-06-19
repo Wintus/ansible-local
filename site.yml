@@ -34,10 +34,6 @@
         - system
         - user
 
-    - role: emacs
-      tags:
-        - user
-
     - role: wintus.git
       tags:
         - system
@@ -73,3 +69,8 @@
       tags:
         - system
         - language
+
+    - role: wintus.spacemacs
+      tags:
+        - user
+        - system
