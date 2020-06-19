@@ -36,8 +36,8 @@
         src: "{{ working_dir }}/hub-linux-amd64-{{ hub_version }}/etc/hub.fish_completion"
         dest: ~/.config/fish/completions/hub.fish
 
-- name: set hub profile
-  copy:
-    src: hub.sh
-    dest: "{{ bash_profile_dir }}"
-    mode: a+x
+    - name: set hub profile
+      copy:
+        src: hub.sh
+        dest: "{{ bash_profile_dir }}"
+        mode: a+x
