@@ -30,5 +30,8 @@
 - src: https://github.com/Wintus/ansible-role-haskell-stack
   name: wintus.haskell-stack
 
+- src: https://github.com/Wintus/ansible-role-go-tools
+  name: wintus.go-tools
+
 - src: https://github.com/Wintus/ansible-role-spacemacs
   name: wintus.spacemacs
