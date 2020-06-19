@@ -29,7 +29,7 @@
       tags:
         - user
 
-    - role: fish
+    - role: wintus.fish
       tags:
         - system
         - user
