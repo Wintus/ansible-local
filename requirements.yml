@@ -6,6 +6,9 @@
 - src: https://github.com/Wintus/ansible-role-bash-fragments
   name: wintus.bash-fragments
 
+- src: https://github.com/Wintus/ansible-role-fish
+  name: wintus.fish
+
 - src: https://github.com/Wintus/ansible-role-git
   name: wintus.git
 
