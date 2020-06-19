@@ -15,5 +15,8 @@
 - src: geerlingguy.nodejs
   version: 5.1.1
 
+- src: https://github.com/Wintus/ansible-role-anyenv
+  name: wintus.anyenv
+
 - src: https://github.com/Wintus/ansible-role-haskell-stack
   name: wintus.haskell-stack
