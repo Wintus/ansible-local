@@ -15,10 +15,10 @@
       tags:
         - system
 
-    - role: gnome
-      when: lookup('env','XDG_CURRENT_DESKTOP') | regex_search('GNOME')
+    - role: wintus.gnome
       tags:
         - user
+        - system
         - desktop
 
     - role: fcitx
