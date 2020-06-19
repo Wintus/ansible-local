@@ -21,7 +21,7 @@
         - system
         - desktop
 
-    - role: fcitx
+    - role: wintus.fcitx
       tags:
         - system
 
