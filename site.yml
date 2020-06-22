@@ -45,6 +45,11 @@
         - user
         - system
 
+    - role: wintus.rust-tools
+      tags:
+        - system
+        - language
+
     - role: wintus.anyenv
       tags:
         - user
@@ -52,11 +57,6 @@
         - language
 
     - role: wintus.haskell-stack
-      tags:
-        - system
-        - language
-
-    - role: wintus.rust-tools
       tags:
         - system
         - language
