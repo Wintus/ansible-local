@@ -1,5 +1,0 @@
----
-
-- name: install or update ghq
-  shell: go get -v -u github.com/motemen/ghq
-  changed_when: no

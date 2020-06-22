@@ -39,9 +39,11 @@
         - system
         - user
 
-    - role: go
+    # TODO: use community role
+    - role: wintus.go-tools
       tags:
         - user
+        - system
 
     - role: wintus.anyenv
       tags:
