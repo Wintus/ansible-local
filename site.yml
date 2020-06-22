@@ -39,9 +39,10 @@
         - system
         - user
 
-    - role: go
+    - role: wintus.go-tools
       tags:
         - user
+        - system
 
     - role: wintus.anyenv
       tags:
