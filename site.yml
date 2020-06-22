@@ -47,6 +47,7 @@
 
     - role: wintus.rust-tools
       tags:
+        - user
         - system
         - language
 
