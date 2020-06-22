@@ -56,7 +56,7 @@
         - system
         - language
 
-    - role: rust
+    - role: wintus.rust-tools
       tags:
         - system
         - language
