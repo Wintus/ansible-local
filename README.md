@@ -8,7 +8,16 @@ https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.ht
     ```bash
     ansible-galaxy install -r requirements.yml
     ```
-1. provision
+1. provision:
     ```bash
-    ansible-playbook -K site.yml
+    ansible-playbook site.yml -K
+    ```
+   
+   Or, save your password in `host_vars/localhost/login.yml` as
+    ```yaml
+    ansible_become_pass: xxxx
+    ```
+   then
+    ```bash
+    ansible-playbook site.yml
     ```
