@@ -62,13 +62,7 @@
         - system
         - language
 
-    - role: geerlingguy.nodejs
-      become: true
-      tags:
-        - system
-        - language
-
-    - role: yarn
+    - role: wintus.yarn
       tags:
         - system
         - language
