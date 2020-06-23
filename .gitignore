@@ -1,3 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Ansible template
 *.retry
+
+host_vars/
