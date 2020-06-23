@@ -62,12 +62,6 @@
         - system
         - language
 
-    - role: geerlingguy.nodejs
-      become: true
-      tags:
-        - system
-        - language
-
     - role: yarn
       tags:
         - system
