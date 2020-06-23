@@ -62,7 +62,7 @@
         - system
         - language
 
-    - role: yarn
+    - role: wintus.yarn
       tags:
         - system
         - language
