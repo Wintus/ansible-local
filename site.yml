@@ -10,20 +10,11 @@
       tags:
         - system
 
-    - role: wintus.oea
-      become: yes
-      tags:
-        - system
-
     - role: wintus.gnome
       tags:
         - user
         - system
         - desktop
-
-    - role: wintus.fcitx
-      tags:
-        - system
 
     - role: wintus.bash-fragments
       tags:

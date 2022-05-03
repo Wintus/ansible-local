@@ -15,12 +15,6 @@
 - src: https://github.com/Wintus/ansible-role-gnome
   name: wintus.gnome
 
-- src: https://github.com/Wintus/ansible-role-oea
-  name: wintus.oea
-
-- src: https://github.com/Wintus/ansible-role-fcitx
-  name: wintus.fcitx
-
 - src: https://github.com/Wintus/ansible-role-anyenv
   name: wintus.anyenv
 
